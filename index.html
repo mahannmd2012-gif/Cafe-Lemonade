@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🍋 کافه لیموناد — نسخه اصلی</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+*{box-sizing:border-box}
+:root{--bg:#07111f;--panel:#0d1b2d;--panel2:#11243a;--line:#203752;--text:#eef7ff;--muted:#91a7bd;--blue:#36a8ff;--cyan:#44e0ff;--green:#31d58a;--red:#ff5f6d;--yellow:#ffc857;--shadow:0 18px 55px #0007}
+body{margin:0;background:radial-gradient(circle at 10% 0%,#12365a 0,#07111f 35%,#050b14 100%);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.top{position:sticky;top:0;z-index:50;background:#07111fee;backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-size:20px;font-weight:900}.brand small{display:block;color:var(--muted);font-size:11px;font-weight:500}
+.nav{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.nav .exit{width:30px;height:30px;padding:0;border-radius:50%;font-size:18px;line-height:28px;background:#4a1822;border-color:#78303d;color:#ffb9c0;font-weight:900}
+.btn{border:1px solid var(--line);background:#10233a;color:var(--text);padding:10px 14px;border-radius:12px;font-weight:700;transition:.18s}
+.btn:hover{transform:translateY(-1px);border-color:#39739f;background:#15304c}
+.btn.primary{background:linear-gradient(135deg,#168df0,#36c8ff);border:0;color:#001221}
+.btn.green{background:linear-gradient(135deg,#16b875,#42e99f);border:0;color:#00180f}
+.btn.red{background:#4a1822;border-color:#78303d;color:#ffb9c0}
+.btn.yellow{background:#493714;border-color:#765b1d;color:#ffe6a1}
+.container{max-width:1250px;margin:0 auto;padding:24px 18px 60px}
+.hero{padding:28px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,#102a45,#0a1728);box-shadow:var(--shadow);margin-bottom:20px}
+.hero h1{margin:0 0 7px;font-size:clamp(25px,4vw,42px)}.hero p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:linear-gradient(180deg,#102238,#0c1929);border:1px solid var(--line);border-radius:20px;padding:17px;box-shadow:0 10px 35px #0003}
+.card h3{margin:0 0 8px}.muted{color:var(--muted)}.price{font-size:22px;font-weight:900;color:#6dd7ff}.old{text-decoration:line-through;color:#70869c;font-size:14px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.row.wrap{flex-wrap:wrap}
+input,select,textarea{width:100%;background:#081523;color:var(--text);border:1px solid #29435e;border-radius:12px;padding:11px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #44e0ff12}
+label{display:block;color:#a9bdd0;font-size:13px;margin:0 0 6px}.field{margin-bottom:12px}
+.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.full{grid-column:1/-1}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border-radius:999px;background:#102f48;color:#8edcff;font-size:12px;font-weight:800}
+.badge.green{background:#103a2b;color:#75f0b6}.badge.red{background:#431923;color:#ff9ba6}.badge.yellow{background:#473814;color:#ffe39a}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:24px 0 12px}.section-title h2{margin:0}
+.empty{padding:35px;text-align:center;border:1px dashed #2b4761;border-radius:18px;color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.menu-category-tabs{position:sticky;top:72px;z-index:20;padding:10px;border:1px solid var(--line);border-radius:16px;background:#07111ff2;backdrop-filter:blur(16px)}
+.menu-category-tabs .btn{flex:0 0 auto}
+.menu-category-view{animation:menuFade .18s ease}
+@keyframes menuFade{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+.tab.active{background:#1d8fdb;border-color:#1d8fdb;color:white}
+.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:16px;z-index:100}
+.modal.show{display:flex}.modalbox{width:min(700px,100%);max-height:90vh;overflow:auto;background:#0d1b2d;border:1px solid #2c4c69;border-radius:22px;padding:20px;box-shadow:0 30px 100px #000}
+.toast{position:fixed;left:18px;bottom:18px;background:#122941;border:1px solid #37617f;padding:12px 16px;border-radius:13px;z-index:200;display:none}
+.toast.show{display:block}
+.pack{position:relative;overflow:hidden;border-color:#2c72a1;background:linear-gradient(145deg,#102d48,#0b1828)}
+.pack:before{content:"";position:absolute;inset:auto -35px -55px auto;width:160px;height:160px;border-radius:50%;background:#24b8ff12}
+.pack .discount{position:absolute;left:13px;top:13px;background:#ffb52e;color:#241600;padding:7px 10px;border-radius:10px;font-weight:900}
+.packitems{margin:12px 0;padding:10px;border-radius:12px;background:#071321;border:1px solid #1b344d}
+.itemline{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid #183047;font-size:13px}.itemline:last-child{border:0}
+.adminbox{background:#0b1929;border:1px solid #24435e;border-radius:18px;padding:16px;margin-bottom:14px}
+.kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.kpi .card{text-align:center}.kpi b{font-size:25px}
+table{width:100%;border-collapse:collapse;min-width:720px}th,td{border-bottom:1px solid #20374e;padding:10px;text-align:right}th{color:#a9c4da;background:#0b1929}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:16px}
+.hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+.qty{display:flex;align-items:center;gap:8px}.qty button{width:34px;height:34px;padding:0;border-radius:10px}
+.note{padding:11px 13px;background:#0c2338;border-right:3px solid var(--cyan);border-radius:10px;color:#b8d2e7}
+@media(max-width:900px){.kpi{grid-template-columns:repeat(3,1fr)}}@media(max-width:700px){.top{align-items:flex-start;flex-direction:column}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.kpi{grid-template-columns:repeat(2,1fr)}.container{padding:15px 12px 40px}}
+</style>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js">
+/* ADMIN CHAT CREATION */
+function adminCreateChat(){
+  try{
+    const users = (typeof db!=="undefined" && Array.isArray(db.users)) ? db.users : [];
+    const names = users.filter(u=>u && u.id && u.id!==session?.userId).map(u=>u.name||u.phone||"کاربر");
+    const who = prompt("نام کاربر برای چت خصوصی را وارد کنید:\n\n"+(names.length?names.join("، "):"کاربری موجود نیست"));
+    if(!who) return;
+    const target = users.find(u=>(u.name||u.phone)===who);
+    if(!target){ if(typeof toast==="function") toast("کاربر پیدا نشد"); return; }
+    if(typeof openPrivateChat==="function"){ openPrivateChat(target.id); return; }
+    if(typeof startPrivateChat==="function"){ startPrivateChat(target.id); return; }
+    if(typeof toast==="function") toast("امکان ساخت چت در این نسخه پیدا نشد");
+  }catch(e){ console.error(e); if(typeof toast==="function") toast("خطا در ساخت چت"); }
+}
+
+
+function addUserToGroupChat(userId){
+  try{
+    const users = (typeof db!=="undefined" && Array.isArray(db.users)) ? db.users : [];
+    const u = users.find(x=>String(x.id)===String(userId));
+    if(!u){ if(typeof toast==="function") toast("کاربر پیدا نشد"); return; }
+    const groupName = prompt("نام گروه چت را وارد کنید:");
+    if(!groupName) return;
+    let groups = Array.isArray(db.groups) ? db.groups : [];
+    let g = groups.find(x=>String(x.name)===String(groupName));
+    if(!g){
+      g = {id:"g_"+Date.now(), name:groupName, members:[session?.userId, userId].filter(Boolean), createdAt:Date.now(), messages:[]};
+      groups.push(g);
+    }else if(!Array.isArray(g.members)){
+      g.members=[];
+      if(session?.userId) g.members.push(session.userId);
+    }
+    if(!g.members.map(String).includes(String(userId))) g.members.push(userId);
+    db.groups=groups;
+    if(typeof saveDB==="function") saveDB();
+    if(typeof toast==="function") toast("کاربر به گروه اضافه شد");
+    if(typeof render==="function") render();
+  }catch(e){ console.error(e); if(typeof toast==="function") toast("خطا در افزودن به گروه"); }
+}
+
+</script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#07080d"></head>
+<body>
+<div id="app"></div>
+<div id="toast" class="toast"></div>
+<div id="modal" class="modal"><div id="modalBox" class="modalbox"></div></div>
+
+<script>
+"use strict";
+
+/* =========================
+   🍋 کافه لیموناد - تک فایل
+   ========================= */
+const DBKEY="LEMONADE_STABLE_DATABASE_V1";
+const LEGACY_DBKEY="LEMONADE_PACK_STORE_V3";
+const CARTKEY="LEMONADE_PACK_CART_V3";
+const SESSIONKEY="LEMONADE_PACK_SESSION_V3";
+
+/* ☁️ همگام‌سازی چنددستگاهی: بدون تغییر ظاهر برنامه.
+   برای فعال شدن چت بین دو گوشی، مشخصات پروژه Firebase خودت را اینجا وارد کن.
+   اگر خالی باشد، برنامه همچنان به‌صورت آفلاین کار می‌کند. */
+const FIREBASE_CONFIG={
+  apiKey:"",
+  authDomain:"",
+  projectId:"",
+  storageBucket:"",
+  messagingSenderId:"",
+  appId:""
+};
+let cloud=null, cloudReady=false, cloudUnsub=null, cloudWriting=false;
+function cloudConfigured(){return !!(FIREBASE_CONFIG.apiKey&&FIREBASE_CONFIG.projectId&&FIREBASE_CONFIG.appId)}
+function cloudInit(){
+  try{
+    if(!cloudConfigured()||typeof firebase==="undefined")return false;
+    if(!firebase.apps.length)firebase.initializeApp(FIREBASE_CONFIG);
+    cloud={auth:firebase.auth(),db:firebase.firestore()}; cloudReady=true; return true;
+  }catch(e){console.warn("Cloud init failed",e);cloudReady=false;return false}
+}
+cloudInit();
+function safeLocalSet(k,v){try{localStorage.setItem(k,v)}catch(e){console.warn(e)}}
+function cloudDoc(){return cloud?.db?.collection("lemonade").doc("main")||null}
+function cloudCol(name){return cloud?.db?.collection("lemonade").doc("main").collection(name)||null}
+/* کاربران، چت‌ها و پیام‌ها جداگانه ذخیره می‌شوند تا دو گوشی هم‌زمان اطلاعات یکدیگر را overwrite نکنند. */
+function cloudPayload(){return {bugReports:db.bugReports||[],reports:db.reports||[],bannedUsers:db.bannedUsers||[],updatedAt:new Date().toISOString()}}
+async function cloudPush(){
+  if(!cloudReady||!cloudDoc()||cloudWriting)return;
+  try{
+    cloudWriting=true;
+    await cloudDoc().set(cloudPayload(),{merge:true});
+    const batch=cloud.db.batch();
+    (db.users||[]).forEach(u=>batch.set(cloudCol("users").doc(String(u.id)),u,{merge:true}));
+    (db.chats||[]).forEach(c=>batch.set(cloudCol("chats").doc(String(c.id)),c,{merge:true}));
+    (db.messages||[]).forEach(m=>batch.set(cloudCol("messages").doc(String(m.id)),m,{merge:true}));
+    await batch.commit();
+  }catch(e){console.warn("Cloud sync write failed",e)}finally{cloudWriting=false}
+}
+function cloudStartListener(){
+  if(!cloudReady||cloudUnsub)return;
+  const unsubs=[];
+  const mainUnsub=cloudDoc().onSnapshot(snap=>{
+    if(snap.exists){const x=snap.data()||{};["bugReports","reports","bannedUsers"].forEach(k=>{if(Array.isArray(x[k]))db[k]=x[k]});}
+    safeLocalSet(DBKEY,JSON.stringify(db)); if(!cloudWriting)render();
+  },e=>console.warn("Cloud main read failed",e));
+  unsubs.push(mainUnsub);
+  ["users","chats","messages"].forEach(col=>{
+    const un=cloudCol(col).onSnapshot(snap=>{
+      const rows=[];snap.forEach(d=>rows.push(d.data()));
+      db[col]=rows; safeLocalSet(DBKEY,JSON.stringify(db));
+      if(!cloudWriting)render();
+    },e=>console.warn("Cloud "+col+" read failed",e));
+    unsubs.push(un);
+  });
+  cloudUnsub=()=>unsubs.forEach(fn=>{try{fn()}catch(e){}});
+}
+function cloudSyntheticEmail(phone){return String(phone||"").replace(/\D/g,"")+"@lemonade.local"}
+function isBannedUser(u){return !!(u&&(u.banned===true||db.bannedUsers?.includes(u.id)))}
+
+
+const defaultDB={
+  siteName:"کافه فست فود لیموناد",
+  adminPin:"20832083",
+  dailyText:"پیشنهاد امروز را از اینجا ببینید 🎁",
+  users:[],
+  orders:[],
+  recentOrders:[],
+  reviews:[],
+  chats:[],
+  messages:[],
+  bugReports:[],
+  reports:[],
+  bannedUsers:[],
+  foods:[
+    {id:"f1",name:"برگر کلاسیک",price:445000,emoji:"🍔",categoryId:"cat1",active:true},
+    {id:"f3",name:"برگر ویژه",price:595000,emoji:"🍔",categoryId:"cat1",active:true},
+    {id:"f8",name:"برگر رویال",price:695000,emoji:"🍔",categoryId:"cat1",active:true},
+    {id:"f9",name:"چیزبرگر",price:545000,emoji:"🧀",categoryId:"cat1",active:true},
+    {id:"f10",name:"ماشروم برگر",price:495000,emoji:"🍄",categoryId:"cat1",active:true},
+    {id:"f11",name:"غول برگر (پیشنهاد ویژه)",price:795000,emoji:"👑",categoryId:"cat1",active:true},
+    {id:"f12",name:"دوبل برگر کلاسیک",price:745000,emoji:"🍔",categoryId:"cat1",active:true},
+    {id:"f13",name:"دوبل برگر ویژه",price:895000,emoji:"🔥",categoryId:"cat1",active:true},
+    {id:"f14",name:"دوبل برگر رویال",price:995000,emoji:"👑",categoryId:"cat1",active:true},
+    {id:"f15",name:"چیکن لاویتا",price:595000,emoji:"🍗",categoryId:"cat2",active:true},
+    {id:"f16",name:"رست بیف کلاسیک",price:695000,emoji:"🥩",categoryId:"cat2",active:true},
+    {id:"f17",name:"رست بیف ویژه",price:895000,emoji:"🥩",categoryId:"cat2",active:true},
+    {id:"f18",name:"رست بیف رویال",price:995000,emoji:"👑",categoryId:"cat2",active:true},
+    {id:"f4",name:"فیله مرغ کلاسیک",price:495000,emoji:"🍗",categoryId:"cat2",active:true},
+    {id:"f19",name:"فیله مرغ ویژه",price:645000,emoji:"🍗",categoryId:"cat2",active:true},
+    {id:"f20",name:"فیله مرغ رویال",price:745000,emoji:"👑",categoryId:"cat2",active:true},
+    {id:"f21",name:"بندری کلاسیک",price:295000,emoji:"🌭",categoryId:"cat2",active:true},
+    {id:"f22",name:"بندری ویژه",price:445000,emoji:"🌭",categoryId:"cat2",active:true},
+    {id:"f23",name:"بندری رویال",price:545000,emoji:"🔥",categoryId:"cat2",active:true},
+    {id:"f24",name:"هات داگ تنوری کلاسیک",price:295000,emoji:"🌭",categoryId:"cat2",active:true},
+    {id:"f25",name:"هات داگ تنوری ویژه",price:445000,emoji:"🌭",categoryId:"cat2",active:true},
+    {id:"f26",name:"هات داگ تنوری رویال",price:545000,emoji:"🔥",categoryId:"cat2",active:true},
+    {id:"f27",name:"فرانکفورتر تنوری کلاسیک",price:395000,emoji:"🌭",categoryId:"cat2",active:true},
+    {id:"f28",name:"فرانکفورتر تنوری ویژه",price:545000,emoji:"🌭",categoryId:"cat2",active:true},
+    {id:"f29",name:"فرانکفورتر تنوری رویال",price:645000,emoji:"🔥",categoryId:"cat2",active:true},
+    {id:"f30",name:"کراکف پنیری",price:495000,emoji:"🌭",categoryId:"cat2",active:true},
+    {id:"f31",name:"ژامبون تنوری ۹۰٪",price:495000,emoji:"🥪",categoryId:"cat2",active:true},
+    {id:"f32",name:"ژامبون سرد ۹۰٪",price:345000,emoji:"🥪",categoryId:"cat2",active:true},
+    {id:"f2",name:"پیتزا مخصوص لیموناد - مینی",price:395000,emoji:"🍕",categoryId:"cat3",active:true},
+    {id:"f33",name:"پیتزا مخصوص لیموناد - یک نفره",price:495000,emoji:"🍕",categoryId:"cat3",active:true},
+    {id:"f34",name:"پیتزا مخصوص لیموناد - دو نفره",price:645000,emoji:"🍕",categoryId:"cat3",active:true},
+    {id:"f35",name:"پیتزا مخلوط - مینی",price:345000,emoji:"🍕",categoryId:"cat3",active:true},
+    {id:"f36",name:"پیتزا مخلوط - یک نفره",price:445000,emoji:"🍕",categoryId:"cat3",active:true},
+    {id:"f37",name:"پیتزا مخلوط - دو نفره",price:595000,emoji:"🍕",categoryId:"cat3",active:true},
+    {id:"f38",name:"پیتزا رست بیف - مینی",price:595000,emoji:"🥩",categoryId:"cat3",active:true},
+    {id:"f39",name:"پیتزا رست بیف - یک نفره",price:745000,emoji:"🥩",categoryId:"cat3",active:true},
+    {id:"f40",name:"پیتزا رست بیف - دو نفره",price:845000,emoji:"🥩",categoryId:"cat3",active:true},
+    {id:"f41",name:"پیتزا مرغ و قارچ - مینی",price:495000,emoji:"🍗",categoryId:"cat3",active:true},
+    {id:"f42",name:"پیتزا مرغ و قارچ - یک نفره",price:595000,emoji:"🍗",categoryId:"cat3",active:true},
+    {id:"f43",name:"پیتزا مرغ و قارچ - دو نفره",price:745000,emoji:"🍗",categoryId:"cat3",active:true},
+    {id:"f44",name:"پیتزا گوشت و قارچ - مینی",price:495000,emoji:"🥩",categoryId:"cat3",active:true},
+    {id:"f45",name:"پیتزا گوشت و قارچ - یک نفره",price:595000,emoji:"🥩",categoryId:"cat3",active:true},
+    {id:"f46",name:"پیتزا گوشت و قارچ - دو نفره",price:745000,emoji:"🥩",categoryId:"cat3",active:true},
+    {id:"f47",name:"پیتزا کراکف - مینی",price:395000,emoji:"🌭",categoryId:"cat3",active:true},
+    {id:"f48",name:"پیتزا کراکف - یک نفره",price:495000,emoji:"🌭",categoryId:"cat3",active:true},
+    {id:"f49",name:"پیتزا کراکف - دو نفره",price:645000,emoji:"🌭",categoryId:"cat3",active:true},
+    {id:"f50",name:"پیتزا هالوپینو - مینی",price:395000,emoji:"🌶️",categoryId:"cat3",active:true},
+    {id:"f51",name:"پیتزا هالوپینو - یک نفره",price:495000,emoji:"🌶️",categoryId:"cat3",active:true},
+    {id:"f52",name:"پیتزا هالوپینو - دو نفره",price:645000,emoji:"🌶️",categoryId:"cat3",active:true},
+    {id:"f53",name:"پیتزا میکس - مینی",price:495000,emoji:"🍕",categoryId:"cat3",active:true},
+    {id:"f54",name:"پیتزا میکس - یک نفره",price:595000,emoji:"🍕",categoryId:"cat3",active:true},
+    {id:"f55",name:"پیتزا میکس - دو نفره",price:745000,emoji:"🍕",categoryId:"cat3",active:true},
+    {id:"f56",name:"پیتزا ماشروم - مینی",price:295000,emoji:"🍄",categoryId:"cat3",active:true},
+    {id:"f57",name:"پیتزا ماشروم - یک نفره",price:395000,emoji:"🍄",categoryId:"cat3",active:true},
+    {id:"f58",name:"پیتزا ماشروم - دو نفره",price:545000,emoji:"🍄",categoryId:"cat3",active:true},
+    {id:"f59",name:"نان سیر پیتزایی - مینی",price:195000,emoji:"🧄",categoryId:"cat3",active:true},
+    {id:"f60",name:"نان سیر پیتزایی - یک نفره",price:295000,emoji:"🧄",categoryId:"cat3",active:true},
+    {id:"f61",name:"نان سیر پیتزایی - دو نفره",price:395000,emoji:"🧄",categoryId:"cat3",active:true},
+    {id:"f62",name:"سیب‌زمینی تک نفره",price:245000,emoji:"🍟",categoryId:"cat4",active:true},
+    {id:"f63",name:"سیب‌زمینی دو نفره",price:395000,emoji:"🍟",categoryId:"cat4",active:true},
+    {id:"f64",name:"اسپرسو تک",price:80000,emoji:"☕",categoryId:"cat6",active:true},
+    {id:"f65",name:"اسپرسو دبل",price:140000,emoji:"☕",categoryId:"cat6",active:true},
+    {id:"f66",name:"آمریکانو",price:200000,emoji:"☕",categoryId:"cat6",active:true},
+    {id:"f67",name:"کاپوچینو",price:250000,emoji:"☕",categoryId:"cat6",active:true},
+    {id:"f68",name:"هات چاکلت",price:250000,emoji:"🍫",categoryId:"cat6",active:true},
+    {id:"f69",name:"لاته",price:220000,emoji:"🥛",categoryId:"cat6",active:true},
+    {id:"f70",name:"چای دمی",price:45000,emoji:"🫖",categoryId:"cat6",active:true},
+    {id:"f71",name:"انواع دمنوش",price:100000,emoji:"🌿",categoryId:"cat6",active:true}
+  ],
+  packs:[],
+  categories:[
+    {id:"cat1",name:"برگرها",emoji:"🍔"},
+    {id:"cat2",name:"ساندویچ‌ها",emoji:"🥪"},
+    {id:"cat3",name:"پیتزاها",emoji:"🍕"},
+    {id:"cat4",name:"پیش‌غذا",emoji:"🍟"},
+    {id:"cat6",name:"قهوه و نوشیدنی گرم",emoji:"☕"}
+  ],
+  rewards:[
+    {id:"r1",name:"لیموناد رایگان",points:500,description:"با ۵۰۰ امتیاز یک لیموناد دریافت کنید."},
+    {id:"r2",name:"پیتزا مخصوص",points:1000,description:"با ۱۰۰۰ امتیاز پیتزا مخصوص بگیرید."}
+  ],
+  menuCatalogVersion:2,
+  schemaVersion:6
+};
+
+function clone(x){return JSON.parse(JSON.stringify(x))}
+function mergeMenuCatalog(d){
+  const cats=defaultDB.categories||[];
+  d.categories=Array.isArray(d.categories)?d.categories:[];
+  cats.forEach(c=>{
+    let existing=d.categories.find(x=>x.name===c.name||x.id===c.id);
+    if(!existing){d.categories.push(clone(c));existing=d.categories[d.categories.length-1]}
+    existing.id=c.id; existing.name=c.name; existing.emoji=c.emoji;
+  });
+
+  const byId=new Map((d.foods||[]).map(f=>[String(f.id||''),f]));
+  const byName=new Map((d.foods||[]).map(f=>[String(f.name||'').trim(),f]));
+  defaultDB.foods.forEach(item=>{
+    let f=byId.get(item.id)||byName.get(item.name);
+    if(!f){
+      d.foods.push(clone(item));
+    }else{
+      // Keep customer/admin price and other custom fields, but synchronize
+      // the official menu name/category/sticker.
+      f.name=item.name;
+      f.categoryId=item.categoryId;
+      f.emoji=item.emoji;
+      if(typeof f.active!=="boolean") f.active=true;
+    }
+  });
+
+  // Fix legacy names even if a previous version stored them under old names.
+  const legacyNames={
+    "چیکن لاویت":"چیکن لاویتا",
+    "کراکت پنیری":"کراکف پنیری",
+    "بندی کلاسیک":"بندری کلاسیک",
+    "بندی ویژه":"بندری ویژه",
+    "بندی رویال":"بندری رویال"
+  };
+  Object.entries(legacyNames).forEach(([oldName,newName])=>{
+    const f=d.foods.find(x=>String(x.name||'').trim()===oldName);
+    const official=defaultDB.foods.find(x=>x.name===newName);
+    if(f && official){
+      f.name=newName;
+      f.categoryId=official.categoryId;
+      f.emoji=official.emoji;
+    }
+  });
+
+  d.menuCatalogVersion=3;
+  return d;
+}
+function loadDB(){
+  try{
+    let raw=localStorage.getItem(DBKEY);
+    if(!raw){
+      raw=localStorage.getItem(LEGACY_DBKEY);
+    }
+    if(!raw){const fresh=clone(defaultDB);localStorage.setItem(DBKEY,JSON.stringify(fresh));return fresh}
+    const d=JSON.parse(raw);
+    const merged={...clone(defaultDB),...d,foods:Array.isArray(d.foods)?d.foods:clone(defaultDB.foods),packs:Array.isArray(d.packs)?d.packs:[],users:Array.isArray(d.users)?d.users:[],orders:Array.isArray(d.orders)?d.orders:[],recentOrders:Array.isArray(d.recentOrders)?d.recentOrders:[],reviews:Array.isArray(d.reviews)?d.reviews:[],chats:Array.isArray(d.chats)?d.chats:[],messages:Array.isArray(d.messages)?d.messages:[],bugReports:Array.isArray(d.bugReports)?d.bugReports:[],reports:Array.isArray(d.reports)?d.reports:[],bannedUsers:Array.isArray(d.bannedUsers)?d.bannedUsers:[],rewards:d.rewards||clone(defaultDB.rewards),categories:Array.isArray(d.categories)?d.categories:clone(defaultDB.categories)};
+    merged.schemaVersion=7; merged.adminPin="20832083";
+    merged.users.forEach(u=>{if(typeof u.onlineVisible!=="boolean")u.onlineVisible=true;if(typeof u.online!=="boolean")u.online=false;if(!u.lastSeenAt)u.lastSeenAt=u.createdAt||new Date().toISOString();});
+    merged.orders.forEach(o=>{if(!o.adminDeliveredAt&&o.status==="تحویل شد")o.adminDeliveredAt=o.completedAt||new Date().toISOString();if(!o.customerConfirmedAt)o.customerConfirmedAt=null;});
+    merged.recentOrders.forEach(o=>{if(!o.closedAt)o.closedAt=o.completedAt||new Date().toISOString();});
+    if(Number(merged.menuCatalogVersion||0)<3)mergeMenuCatalog(merged);
+    localStorage.setItem(DBKEY,JSON.stringify(merged));
+    return merged;
+  }catch(e){const fresh=clone(defaultDB);localStorage.setItem(DBKEY,JSON.stringify(fresh));return fresh}
+}
+function safeParseJSON(raw,fallback){
+  try{
+    if(raw===null||raw===undefined||raw==="") return fallback;
+    const value=JSON.parse(raw);
+    return value===null||value===undefined?fallback:value;
+  }catch(e){ return fallback; }
+}
+function safeLocalGet(key,fallback=""){try{const v=localStorage.getItem(key);return v===null?fallback:v}catch(e){return fallback}}
+let db=loadDB();
+let session=safeParseJSON(safeLocalGet(SESSIONKEY,""),null);
+let cart=safeParseJSON(safeLocalGet(CARTKEY,"[]"),[]);
+if(!Array.isArray(cart)) cart=[];
+let mode=session?.mode==="admin"?"admin":"customer";
+let tab="home";
+
+function save(){safeLocalSet(DBKEY,JSON.stringify(db)); cloudPush();}
+function touchPresence(){const u=currentUser();if(!u)return;u.lastSeenAt=new Date().toISOString();u.online=true;localStorage.setItem(DBKEY,JSON.stringify(db));}
+function saveCart(){safeLocalSet(CARTKEY,JSON.stringify(Array.isArray(cart)?cart:[]))}
+function money(n){return Number(n||0).toLocaleString("fa-IR")+" تومان"}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function uid(prefix="id"){return prefix+"_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,8)}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove("show"),2500)}
+function nowLocalInput(){
+  const d=new Date();const p=n=>String(n).padStart(2,"0");
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+function formatDate(s){if(!s)return "بدون محدودیت";try{return new Date(s).toLocaleString("fa-IR")}catch{return s}}
+function currentUser(){return session?.userId?db.users.find(u=>u.id===session.userId):null}
+
+function isPackActive(pack){
+  const now=Date.now();
+  if(pack.startAt && now < new Date(pack.startAt).getTime()) return false;
+  if(pack.endAt && now > new Date(pack.endAt).getTime()) return false;
+  return pack.active!==false;
+}
+function packOriginal(pack){
+  return (pack.items||[]).reduce((sum,it)=>{
+    const f=db.foods.find(x=>x.id===it.foodId);
+    return sum+(f?f.price*Number(it.qty||1):0)
+  },0);
+}
+function packFinal(pack){
+  const original=Number(pack.originalPrice||packOriginal(pack));
+  const discount=Number(pack.discount||0);
+  if(Number.isFinite(discount)){
+    return Math.max(0,Math.round(original*(1-discount/100)));
+  }
+  if(pack.finalPrice!=="" && pack.finalPrice!=null && Number(pack.finalPrice)>=0) return Number(pack.finalPrice);
+  return original;
+}
+function packDiscount(pack){
+  const o=packOriginal(pack), f=packFinal(pack);
+  return o>0?Math.max(0,Math.round((1-f/o)*100)):0;
+}
+
+function render(){
+  try{db=loadDB(); const html=mode==="admin"?adminApp():customerApp(); document.documentElement.lang=getLang(); document.documentElement.dir=getLang()==="en"?"ltr":"rtl"; document.getElementById("app").innerHTML=localizeHTML(html);}
+  catch(e){console.error(e); document.getElementById("app").innerHTML=`<main class="container"><div class="hero"><h1>🍋 کافه لیموناد</h1><p>برنامه با خطای موقت روبه‌رو شد.</p><button class="btn primary" onclick="location.reload()">تلاش دوباره</button></div></main>`}
+}
+function topbar(title){
+ return `<header class="top">
+   <div class="brand">🍋 ${esc(db.siteName)}<small>${esc(title)}</small></div>
+   <nav class="nav">
+    ${mode==="customer"?`
+      <button class="btn ${tab==="home"?"primary":""}" onclick="setTab('home')">خانه</button>
+      <button class="btn ${tab==="menu"?"primary":""}" onclick="setTab('menu')">منو</button>
+      <button class="btn ${tab==="packs"?"primary":""}" onclick="setTab('packs')">🎁 پک تخفیفی</button>
+      <button class="btn ${tab==="cart"?"primary":""}" onclick="setTab('cart')">🛒 سبد (${cartCount()})</button>
+      ${session?.userId?`<button class="btn ${tab==="orders"?"primary":""}" onclick="setTab('orders')">سفارش‌های من</button><button class="btn ${tab==="recent"?"primary":""}" onclick="setTab('recent')">🕘 سفارش‌های اخیر</button><button class="btn ${tab==="chats"?"primary":""}" onclick="setTab('chats')">💬 چت‌ها</button><button class="btn ${tab==="profile"?"primary":""}" onclick="setTab('profile')">👤 پروفایل</button>`:""}
+      <button class="btn ${tab==="settings"?"primary":""}" onclick="setTab('settings')">⚙️ تنظیمات</button>
+      <button class="btn ${tab==="bug"?"primary":""}" onclick="setTab('bug')">🐞 گزارش باگ</button>
+      <button class="btn" onclick="openAdminLogin()">⚙️ مدیریت</button>
+      ${session?.userId?`<button class="btn red" onclick="logout()">خروج</button>`:""}
+    `:`
+      <button class="btn ${tab==="dashboard"?"primary":""}" onclick="setTab('dashboard')">داشبورد</button>
+      <button class="btn ${tab==="packs"?"primary":""}" onclick="setTab('packs')">🎁 پیشنهاد امروز / پک‌ها</button>
+      <button class="btn ${tab==="foods"?"primary":""}" onclick="setTab('foods')">🍔 غذاها</button>
+      <button class="btn ${tab==="orders"?"primary":""}" onclick="setTab('orders')">📦 سفارش‌ها</button>
+      <button class="btn ${tab==="reviews"?"primary":""}" onclick="setTab('reviews')">⭐ رضایت‌ها</button>
+      <button class="btn ${tab==="gameAdmin"?"primary":""}" onclick="setTab('gameAdmin')">🎮 مینی‌گیم</button>
+      <button class="btn ${tab==="chats"?"primary":""}" onclick="setTab('chats')">💬 چت‌ها</button>
+      <button class="btn ${tab==="users"?"primary":""}" onclick="setTab('users')">👥 کاربران</button>
+      <button class="btn ${tab==="settings"?"primary":""}" onclick="setTab('settings')">⚙️ Settings</button>
+      <button class="btn ${tab==="bugs"?"primary":""}" onclick="setTab('bugs')">🐞 گزارش باگ</button>
+      <button class="btn" onclick="backCustomer()">بازگشت به مشتری</button>
+    `}
+   </nav>
+ </header>`;
+}
+function customerApp(){
+ const u=currentUser();
+ return `${topbar(u?`سلام ${u.name}`:"سفارش آنلاین")}<main class="container">${customerContent()}</main>`;
+}
+function customerContent(){
+ if(tab==="menu")return menuPage();
+ if(tab==="packs")return customerPacks();
+ if(tab==="cart")return cartPage();
+ if(tab==="orders")return ordersPage();
+ if(tab==="recent")return recentOrdersPage();
+ if(tab==="chats")return chatsPage();
+ if(tab==="profile")return profilePage();
+ if(tab==="settings")return settingsPage();
+ if(tab==="bug")return bugReportPage();
+ if(tab==="checkout")return checkoutPage();
+ return homePage();
+}
+function homePage(){
+ const activePacks=db.packs.filter(isPackActive);
+ return `<section class="hero">
+   <h1>🍋 ${esc(db.siteName)}</h1>
+   <p>${esc(db.dailyText)}</p>
+   <div class="row wrap" style="margin-top:18px">
+    <button class="btn primary" onclick="setTab('menu')">مشاهده منو</button>
+    <button class="btn yellow" onclick="setTab('packs')">🎁 دیدن پک‌های تخفیفی</button>
+    ${!session?.userId?`<button class="btn" onclick="openAuth()">ورود / ثبت‌نام</button>`:""}
+   </div>
+ </section>
+ <div class="section-title"><h2>پیشنهادهای امروز</h2><span class="badge">${activePacks.length} پک فعال</span></div>
+ ${activePacks.length?`<div class="grid">${activePacks.slice(0,3).map(packCard).join("")}</div>`:`<div class="empty">فعلاً پک تخفیفی فعالی ثبت نشده است.</div>`}
+ <div class="section-title"><h2>منوی سریع</h2></div>
+ <div class="grid">${db.foods.filter(f=>f.active).slice(0,4).map(foodCard).join("")}</div>`;
+}
+function foodCard(f){
+  const approved=db.reviews.filter(r=>r.foodId===f.id&&r.status==="approved");
+  const avg=approved.length?approved.reduce((s,r)=>s+Number(r.stars||0),0)/approved.length:0;
+  return `<div class="card">${f.image?`<img src="${f.image}" style="width:100%;height:170px;object-fit:cover;border-radius:14px;margin-bottom:10px">`:`<div style="font-size:38px">${esc(f.emoji||"🍔")}</div>`}<div class="row"><h3>${esc(f.name)}</h3>${f.categoryId?`<span class="badge">${esc(categoryName(f.categoryId))}</span>`:""}</div>${f.description?`<p class="muted">${esc(f.description)}</p>`:""}<div class="price">${money(f.price)}</div>${f.prepTime?`<div class="muted" style="font-size:12px;margin-top:6px">⏱ ${f.prepTime} دقیقه آماده‌سازی</div>`:""}<div class="note" style="margin-top:10px">${approved.length?`⭐ ${avg.toFixed(1)} از ۵ • ${approved.length} نظر تأییدشده`:`هنوز نظر تأییدشده‌ای ثبت نشده است.`}</div><div class="row wrap" style="margin-top:12px"><button class="btn primary" style="flex:1" onclick="addFood('${f.id}')">افزودن به سبد</button><button class="btn" style="flex:1" onclick="showFoodReviews('${f.id}')">💬 مشاهده نظر</button><button class="btn green" style="flex:1" onclick="openLatestReview('${f.id}')">⭐ ثبت نظر</button></div></div>`;
+}
+function menuPage(){
+ const cats=(db.categories||[]).filter(c=>db.foods.some(f=>f.active&&f.categoryId===c.id));
+ const activeCount=db.foods.filter(f=>f.active).length;
+ const selectedRaw=window.__menuCategory||"";
+ const selectedCat=cats.find(c=>c.id===selectedRaw);
+ const selected=selectedCat?selectedRaw:"";
+ const visibleFoods=selected
+   ? db.foods.filter(f=>f.active&&f.categoryId===selected)
+   : db.foods.filter(f=>f.active);
+
+ return `<div class="section-title">
+   <h2>🍔 منوی کامل لیموناد</h2>
+   <span class="badge">${selectedCat?esc(selectedCat.name):"همه غذاها"} • ${visibleFoods.length} آیتم</span>
+ </div>
+ <div class="tabs menu-category-tabs">
+   <button class="btn ${selected===""?"primary":""}" onclick="selectMenuCategory('')">🍽️ همه</button>
+   ${cats.map(c=>`<button class="btn ${selected===c.id?"primary":""}" onclick="selectMenuCategory('${c.id}')">${c.emoji} ${esc(c.name)}</button>`).join("")}
+ </div>
+ ${selectedCat?`
+   <section class="menu-category-view">
+     <div class="section-title">
+       <h2>${selectedCat.emoji} ${esc(selectedCat.name)}</h2>
+       <span class="badge">${visibleFoods.length} آیتم</span>
+     </div>
+     <div class="grid">${visibleFoods.map(foodCard).join("")}</div>
+   </section>
+ `:`
+   <section class="menu-category-view">
+     <div class="section-title"><h2>🍽️ همه غذاها</h2><span class="badge">${activeCount} آیتم</span></div>
+     <div class="grid">${visibleFoods.map(foodCard).join("")}</div>
+   </section>
+ `}`;
+}
+function selectMenuCategory(id){
+ const safeId=id&&db.categories.some(c=>c.id===id)?id:"";
+ window.__menuCategory=safeId;
+ window.scrollTo({top:0,behavior:"smooth"});
+ render();
+}
+function packCard(p){
+ const original=packOriginal(p), final=packFinal(p), disc=packDiscount(p);
+ return `<div class="card pack">
+   <div class="discount">${disc}% تخفیف</div>
+   <div style="font-size:40px">🎁</div>
+   <h3>${esc(p.name)}</h3>
+   ${p.description?`<p class="muted">${esc(p.description)}</p>`:""}
+   <div class="packitems">${(p.items||[]).map(it=>{
+      const f=db.foods.find(x=>x.id===it.foodId);
+      return f?`<div class="itemline"><span>${f.emoji} ${esc(f.name)}</span><b>×${it.qty}</b></div>`:""
+   }).join("")}</div>
+   <div style="margin-top:10px"><span class="old">${money(original)}</span> <span class="price">${money(final)}</span></div>
+   <div class="muted" style="font-size:12px;margin-top:8px">${timeInfo(p)}</div>
+   <div class="note" style="margin-top:10px">📦 این پک با قیمت نهایی ${money(final)} آماده ثبت سفارش است. اطلاعات تحویل را در مرحله بعد وارد می‌کنید.</div>
+   <div class="row wrap" style="margin-top:12px">
+     <button class="btn green" style="flex:1" onclick="addPack('${p.id}')">🛒 افزودن به سبد</button>
+     <button class="btn primary" style="flex:1" onclick="orderPackDirect('${p.id}')">📦 ثبت سفارش</button>
+   </div>
+ </div>`;
+}
+function orderPackDirect(id){
+ const p=db.packs.find(x=>x.id===id);
+ if(!p || !isPackActive(p)) return toast("این پک در حال حاضر فعال نیست.");
+ if(!session?.userId) return openAuth("برای ثبت سفارش این پک ابتدا وارد حساب شوید.");
+ const old=cart.find(x=>x.type==="pack"&&x.id===id);
+ if(old) old.qty++;
+ else cart.push({type:"pack",id,qty:1});
+ saveCart();
+ tab="checkout";
+ render();
+}
+function timeInfo(p){
+ if(!p.startAt&&!p.endAt)return "⏱ بدون محدودیت تاریخ و ساعت";
+ return `⏱ شروع: ${p.startAt?formatDate(p.startAt):"بدون محدودیت"} | پایان: ${p.endAt?formatDate(p.endAt):"بدون محدودیت"}`;
+}
+
+function customerPacks(){
+ const active=db.packs.filter(isPackActive);
+ return `<div class="section-title"><h2>🎁 پک‌های تخفیفی</h2><span class="badge">${active.length} پک فعال</span></div>${active.length?`<div class="grid">${active.map(packCard).join("")}</div>`:`<div class="empty">فعلاً پک تخفیفی فعالی ثبت نشده است.</div>`}`;
+}
+function cartCount(){return cart.reduce((s,x)=>s+Number(x.qty||1),0)}
+function addFood(id){
+ const f=db.foods.find(x=>x.id===id);if(!f)return;
+ const old=cart.find(x=>x.type==="food"&&x.id===id);
+ if(old)old.qty++;else cart.push({type:"food",id,qty:1});
+ saveCart();toast("به سبد اضافه شد 🛒");render();
+}
+function addPack(id){
+ const p=db.packs.find(x=>x.id===id);if(!p||!isPackActive(p))return toast("این پک در حال حاضر فعال نیست");
+ const old=cart.find(x=>x.type==="pack"&&x.id===id);
+ if(old)old.qty++;else cart.push({type:"pack",id,qty:1});
+ saveCart();toast("پک تخفیفی به سبد اضافه شد 🎁");render();
+}
+function cartDetails(){
+ return cart.map(c=>{
+   if(c.type==="food"){const f=db.foods.find(x=>x.id===c.id);return f?{...c,name:f.name,emoji:f.emoji,unit:f.price,total:f.price*c.qty}:null}
+   const p=db.packs.find(x=>x.id===c.id);return p?{...c,name:p.name,emoji:"🎁",unit:packFinal(p),total:packFinal(p)*c.qty}:null
+ }).filter(Boolean)
+}
+function cartTotal(){return cartDetails().reduce((s,x)=>s+x.total,0)}
+function changeQty(type,id,delta){
+ const x=cart.find(c=>c.type===type&&c.id===id);if(!x)return;
+ x.qty+=delta;if(x.qty<=0)cart=cart.filter(c=>!(c.type===type&&c.id===id));
+ saveCart();render();
+}
+function cartPage(){
+ const items=cartDetails();
+ if(!items.length)return `<div class="empty"><div style="font-size:50px">🛒</div><h2>سبد خرید خالی است</h2><button class="btn primary" onclick="setTab('menu')">رفتن به منو</button></div>`;
+ return `<div class="section-title"><h2>🛒 سبد خرید</h2></div>
+ <div class="card">${items.map(x=>`<div class="row" style="padding:13px 0;border-bottom:1px solid #20374e">
+   <div><b>${x.emoji} ${esc(x.name)}</b><div class="muted">${money(x.unit)} برای هر عدد</div></div>
+   <div class="qty"><button class="btn" onclick="changeQty('${x.type}','${x.id}',-1)">−</button><b>${x.qty}</b><button class="btn" onclick="changeQty('${x.type}','${x.id}',1)">+</button></div>
+   <b>${money(x.total)}</b>
+ </div>`).join("")}
+ <div class="row" style="padding-top:18px"><h2>جمع کل</h2><div class="price">${money(cartTotal())}</div></div>
+ <button class="btn green" style="width:100%;margin-top:10px" onclick="goCheckout()">ثبت سفارش</button>
+ </div>`;
+}
+function goCheckout(){
+ if(!session?.userId)return openAuth("برای ثبت سفارش ابتدا وارد حساب شوید.");
+ tab="checkout";render();
+}
+function checkoutPage(){
+ if(!session?.userId)return homePage();
+ const u=currentUser();
+ const checkoutItems=cartDetails();
+ const hasPack=checkoutItems.some(x=>x.type==="pack");
+ return `<div class="section-title"><h2>📦 ثبت سفارش</h2><span class="badge">${hasPack?"🎁 سفارش شامل پک تخفیفی":"ثبت سفارش"}</span></div>
+ <div class="card">
+ <div class="note">👤 این بخش مخصوص اطلاعات مشتری و تحویل سفارش است. پک، ساندویچ، تعداد و تخفیف قبلاً توسط ادمین تعیین شده‌اند.<br>تاریخ و ساعت تحویل اختیاری است؛ می‌توانید خالی بگذارید.</div><br>
+ <div class="formgrid">
+  <div class="field"><label>نام گیرنده</label><input id="coName" value="${esc(u.name)}"></div>
+  <div class="field"><label>شماره تلفن</label><input id="coPhone" value="${esc(u.phone||"")}"></div>
+  <div class="field full"><label>آدرس کامل</label><textarea id="coAddress" rows="3" placeholder="آدرس کامل تحویل">${esc(u.savedAddress||"")}</textarea></div>
+  <div class="field"><label>پلاک</label><input id="coPlaque" value="${esc(u.savedPlaque||"")}" placeholder="مثلاً ۲۵"></div>
+  <div class="field"><label>تاریخ تحویل (اختیاری)</label><input id="coDate" type="date"></div>
+  <div class="field"><label>ساعت تحویل (اختیاری)</label><input id="coTime" type="time"></div>
+  <div class="field full"><label>توضیحات</label><textarea id="coNote" rows="2" placeholder="مثلاً بدون سس..."></textarea></div>
+ </div>
+ <hr class="hr">
+ <div class="card" style="background:#081523;border-color:#29435e">
+   <div class="row"><b>💳 پرداخت کارت به کارت</b><span class="badge">شماره کارت</span></div>
+   <div id="cardNumber" dir="ltr" style="font-size:22px;font-weight:900;letter-spacing:2px;text-align:center;margin:14px 0"> 6219 8610 7471 8502</div>
+   <div class="muted" style="text-align:center">به نام جلال عبدالمحمدی: </div>
+   <button class="btn primary" style="width:100%;margin-top:12px" onclick="copyCardNumber()">📋 کپی شماره کارت</button>
+ </div>
+ <div class="row" style="margin-top:15px"><span>مبلغ سفارش</span><b class="price">${money(cartTotal())}</b></div>
+ <button class="btn green" style="width:100%;margin-top:15px" onclick="submitOrder()">ثبت نهایی سفارش</button>
+ </div>`;
+}
+async function copyCardNumber(){
+ const card="6219861074718502";
+ try{
+   if(navigator.clipboard && window.isSecureContext){
+     await navigator.clipboard.writeText(card);
+   }else{
+     const ta=document.createElement("textarea");
+     ta.value=card; ta.setAttribute("readonly","");
+     ta.style.position="fixed";ta.style.opacity="0";ta.style.left="-9999px";
+     document.body.appendChild(ta);ta.focus();ta.select();ta.setSelectionRange(0,ta.value.length);
+     const ok=document.execCommand("copy");
+     ta.remove();
+     if(!ok) throw new Error("copy failed");
+   }
+   toast("شماره کارت کامل و درست کپی شد ✅");
+ }catch(e){
+   toast("کپی خودکار انجام نشد؛ شماره کارت را دستی کپی کنید.");
+ }
+}
+function submitOrder(){
+ const address=document.getElementById("coAddress").value.trim();
+ if(!address)return toast("آدرس را وارد کنید.");
+ const items=cartDetails();
+ if(!items.length)return toast("سبد خرید خالی است.");
+ const total=cartTotal();
+ db.orders.unshift({
+  id:uid("ord"),userId:session.userId,name:document.getElementById("coName").value.trim(),
+  phone:document.getElementById("coPhone").value.trim(),address,
+  plaque:document.getElementById("coPlaque").value.trim(),
+  deliveryDate:document.getElementById("coDate").value,
+  deliveryTime:document.getElementById("coTime").value,
+  note:document.getElementById("coNote").value.trim(),
+  items:items.map(x=>({type:x.type,id:x.id,name:x.name,qty:x.qty,unit:x.unit,total:x.total})),
+  total,status:"در حال آماده‌سازی",createdAt:new Date().toISOString(),adminDeliveredAt:null,customerConfirmedAt:null,closedAt:null
+ });
+ const u=currentUser();u.phone=document.getElementById("coPhone").value.trim();
+ u.points=(u.points||0)+Math.max(1,Math.floor(total/10000));
+ cart=[];saveCart();save();toast("سفارش با موفقیت ثبت شد 🎉");tab="orders";render();
+}
+function ordersPage(){
+ const u=currentUser();if(!u)return homePage();
+ const arr=db.orders.filter(o=>o.userId===u.id);
+ return `<div class="section-title"><h2>📦 سفارش‌های من</h2><span class="badge">${arr.length} سفارش فعال</span></div>
+ ${arr.length?arr.map(o=>`<div class="card" style="margin-bottom:12px">
+   <div class="row"><b>سفارش ${esc(o.id)}</b><span class="badge ${o.adminDeliveredAt?"green":o.status==="ناموجود"?"red":""}">${esc(o.adminDeliveredAt?"تحویل داده شد - منتظر تأیید شما":o.status)}</span></div>
+   <div class="muted" style="margin:8px 0">${formatDate(o.createdAt)}</div>
+   ${o.items.map(i=>`<div class="itemline"><span>${esc(i.name)} × ${i.qty}</span><b>${money(i.total)}</b></div>`).join("")}
+   <div class="row" style="margin-top:10px"><span>مجموع</span><b class="price">${money(o.total)}</b></div>
+   <div class="note" style="margin-top:10px">📍 ${esc(o.address)}${o.plaque?` • پلاک ${esc(o.plaque)}`:""}</div>
+   ${o.adminDeliveredAt&&!o.customerConfirmedAt?`<button class="btn green" style="width:100%;margin-top:12px" onclick="confirmOrderReceived('${o.id}')">✅ سفارش را تحویل گرفتم</button><div class="muted" style="margin-top:7px;font-size:12px">بعد از تأیید شما، سفارش بسته می‌شود و به «سفارش‌های اخیر» منتقل می‌شود.</div>`:""}
+ </div>`).join(""):`<div class="empty">هنوز سفارش فعالی ندارید. سفارش‌های تکمیل‌شده در «سفارش‌های اخیر» هستند.</div>`}`;
+}
+function confirmOrderReceived(id){
+ const o=db.orders.find(x=>x.id===id);if(!o||o.userId!==session?.userId)return;
+ if(!o.adminDeliveredAt)return toast("هنوز مدیریت سفارش را تحویل‌شده اعلام نکرده است.");
+ o.customerConfirmedAt=new Date().toISOString();o.closedAt=o.customerConfirmedAt;o.status="تکمیل شد";
+ db.recentOrders.unshift(clone(o));db.orders=db.orders.filter(x=>x.id!==id);save();
+ toast("سفارش تأیید و بسته شد ✅");render();
+}
+
+function recentOrdersPage(){
+ const u=currentUser();if(!u)return homePage();
+ const arr=db.recentOrders.filter(o=>o.userId===u.id);
+ return `<div class="section-title"><h2>🕘 سفارش‌های اخیر</h2><span class="badge">تحویل‌شده</span></div>
+ <div class="note" style="margin-bottom:12px">سفارش‌هایی که از پنل مدیریت «تحویل شد» شده‌اند، برای حفظ سابقه اینجا نمایش داده می‌شوند.</div>
+ ${arr.length?arr.map(o=>`<div class="card" style="margin-bottom:12px">
+   <div class="row"><b>سفارش ${esc(o.id)}</b><span class="badge green">تحویل شد</span></div>
+   <div class="muted" style="margin:8px 0">ثبت: ${formatDate(o.createdAt)}${o.completedAt?` • تکمیل: ${formatDate(o.completedAt)}`:""}</div>
+   ${o.items.map(i=>`<div class="itemline"><span>${esc(i.name)} × ${i.qty}</span><b>${money(i.total)}</b></div>`).join("")}
+   <div class="row" style="margin-top:10px"><span>مجموع</span><b class="price">${money(o.total)}</b></div>
+   <div class="row wrap" style="margin-top:12px">${o.items.map(i=>`<button class="btn yellow" onclick="openReviewForFood('${o.id}','${i.id}')">⭐ رضایت از ${esc(i.name)}</button>`).join("")}</div>
+ </div>`).join(""):`<div class="empty">هنوز سفارش تحویل‌شده‌ای ندارید.</div>`}`;
+}
+
+/* Auth - stable modal/auth layer */
+function openAuth(msg=""){
+ try{
+  const modal=document.getElementById("modal"), box=document.getElementById("modalBox");
+  if(!modal||!box){alert("پنجره ورود آماده نیست. صفحه را یک‌بار تازه‌سازی کنید.");return;}
+  box.innerHTML=`<h2>👤 ورود / ثبت‌نام</h2>${msg?`<div class="note">${esc(msg)}</div><br>`:""}
+   <div class="tabs"><button type="button" class="btn tab active" onclick="window.authMode('login')">ورود</button><button type="button" class="btn tab" onclick="window.authMode('register')">ثبت‌نام</button></div>
+   <div id="authForm"></div>`;
+  modal.classList.add("show");
+  authMode("login");
+ }catch(e){console.error(e);toast("پنجره ورود باز نشد؛ دوباره تلاش کن.");}
+}
+function authMode(type){
+ const form=document.getElementById("authForm");
+ if(!form)return;
+ document.querySelectorAll(".tabs .tab").forEach((b,i)=>b.classList.toggle("active",(type==="login"&&i===0)||(type==="register"&&i===1)));
+ if(type==="login") form.innerHTML=`
+  <div class="field"><label>شماره موبایل</label><input id="aPhone" inputmode="tel" autocomplete="tel" placeholder="0912..." onkeydown="if(event.key==='Enter')window.login()"></div>
+  <div class="field"><label>رمز عبور</label><input id="aPass" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')window.login()"></div>
+  <button type="button" class="btn primary" style="width:100%" onclick="window.login()">ورود</button>`;
+ else form.innerHTML=`
+  <div class="field"><label>نام</label><input id="aName" autocomplete="name"></div>
+  <div class="field"><label>شماره موبایل</label><input id="aPhone" inputmode="tel" autocomplete="tel"></div>
+  <div class="field"><label>رمز عبور</label><input id="aPass" type="password" autocomplete="new-password" onkeydown="if(event.key==='Enter')window.register()"></div>
+  <button type="button" class="btn green" style="width:100%" onclick="window.register()">ساخت حساب</button>`;
+}
+function closeModal(){const m=document.getElementById("modal");if(m)m.classList.remove("show")}
+
+/* Bind authentication controls immediately. If a later optional feature has an error,
+   login/register must still remain usable instead of becoming dead buttons. */
+window.openAuth=openAuth;
+window.authMode=authMode;
+window.closeModal=closeModal;
+window.login=login;
+window.register=register;
+window.logout=logout;
+
+function logout(){const u=currentUser();if(u){u.online=false;u.lastSeenAt=new Date().toISOString();save()}session=null;localStorage.removeItem(SESSIONKEY);tab="home";render()}
+
+
+/* Bug reports */
+function bugReportPage(){
+ const u=currentUser();
+ return `<section class="hero">
+   <h1>🐞 گزارش باگ</h1>
+   <p>اگر چیزی درست کار نمی‌کند، همین‌جا برای مدیریت گزارشش کن.</p>
+ </section>
+ <div class="card">
+   <div class="field"><label>موضوع باگ</label><input id="bugTitle" placeholder="مثلاً دکمه کپی شماره کارت"></div>
+   <div class="field"><label>بخش مربوطه</label>
+     <select id="bugArea">
+       <option>صفحه اصلی</option><option>منو</option><option>پک تخفیفی</option><option>سبد خرید</option><option>ثبت سفارش</option><option>پرداخت / شماره کارت</option><option>ورود و ثبت‌نام</option><option>سایر</option>
+     </select>
+   </div>
+   <div class="field"><label>توضیح کامل باگ</label><textarea id="bugText" rows="6" placeholder="چه اتفاقی افتاد؟ چه دکمه‌ای را زدی؟ چه چیزی انتظار داشتی؟"></textarea></div>
+   <div class="field"><label>دستگاه / مرورگر (اختیاری)</label><input id="bugDevice" placeholder="مثلاً Chrome - Windows 11"></div>
+   <button class="btn red" style="width:100%" onclick="submitBugReport()">ارسال گزارش برای ادمین</button>
+ </div>
+ <div class="section-title"><h2>گزارش‌های قبلی من</h2></div>
+ ${u?`<div class="grid">${db.bugReports.filter(x=>x.userId===u.id).map(b=>`<div class="card">
+   <div class="row"><b>${esc(b.title)}</b><span class="badge ${b.status==="بررسی شد"?"green":""}">${esc(b.status)}</span></div>
+   <div class="muted" style="margin:8px 0">${esc(b.area)} • ${formatDate(b.createdAt)}</div>
+   <p>${esc(b.text)}</p>
+   ${b.reply?`<div class="note">پاسخ ادمین: ${esc(b.reply)}</div>`:""}
+ </div>`).join("")||`<div class="empty" style="grid-column:1/-1">هنوز گزارشی ارسال نکرده‌ای.</div>`}</div>`:
+ `<div class="empty">برای اینکه گزارش به حساب خودت وصل شود، ابتدا وارد حساب شو.</div>`}`;
+}
+function submitBugReport(){
+ const title=document.getElementById("bugTitle").value.trim(), area=document.getElementById("bugArea").value;
+ const text=document.getElementById("bugText").value.trim(), device=document.getElementById("bugDevice").value.trim();
+ if(!title||!text)return toast("موضوع و توضیح باگ را کامل کن.");
+ const u=currentUser();
+ db.bugReports.unshift({
+   id:uid("bug"),userId:u?.id||"",userName:u?.name||"مهمان",phone:u?.phone||"",
+   title,area,text,device,status:"جدید",reply:"",createdAt:new Date().toISOString()
+ });
+ save();toast("گزارش باگ برای ادمین ارسال شد 🐞");render();
+}
+function adminBugs(){
+ return `<div class="section-title"><h2>🐞 گزارش‌های باگ</h2><span class="badge">${db.bugReports.length} گزارش</span></div>
+ ${db.bugReports.length?db.bugReports.map(b=>`<div class="card" style="margin-bottom:12px">
+   <div class="row"><h3>${esc(b.title)}</h3><span class="badge ${b.status==="بررسی شد"?"green":""}">${esc(b.status)}</span></div>
+   <div class="muted">${esc(b.userName)} ${b.phone?`• ${esc(b.phone)}`:""} • ${esc(b.area)} • ${formatDate(b.createdAt)}</div>
+   <p style="white-space:pre-wrap">${esc(b.text)}</p>
+   ${b.device?`<div class="note">دستگاه/مرورگر: ${esc(b.device)}</div>`:""}
+   <div class="formgrid" style="margin-top:12px">
+     <div class="field full"><label>پاسخ ادمین</label><textarea id="reply_${b.id}" rows="2">${esc(b.reply||"")}</textarea></div>
+   </div>
+   <div class="row">
+     <select id="status_${b.id}" style="max-width:220px">
+       ${["جدید","در حال بررسی","بررسی شد","رفع شد"].map(s=>`<option ${b.status===s?"selected":""}>${s}</option>`).join("")}
+     </select>
+     <button class="btn primary" onclick="saveBugAdmin('${b.id}')">ذخیره پاسخ و وضعیت</button>
+     <button class="btn red" onclick="deleteBug('${b.id}')">حذف</button>
+   </div>
+ </div>`).join(""):`<div class="empty">هنوز هیچ گزارش باگی ثبت نشده است.</div>`}`;
+}
+function saveBugAdmin(id){
+ const b=db.bugReports.find(x=>x.id===id);if(!b)return;
+ b.reply=document.getElementById("reply_"+id).value.trim();
+ b.status=document.getElementById("status_"+id).value;
+ save();toast("گزارش باگ به‌روزرسانی شد.");render();
+}
+function deleteBug(id){
+ if(!confirm("این گزارش حذف شود؟"))return;
+ db.bugReports=db.bugReports.filter(x=>x.id!==id);save();render();
+}
+
+/* Admin */
+function openAdminLogin(){
+ document.getElementById("modalBox").innerHTML=`<h2>⚙️ ورود مدیریت</h2>
+ <div class="field"><label>رمز مدیریت</label><input id="adminPin" type="password" placeholder="رمز"></div>
+ <button class="btn primary" style="width:100%" onclick="adminLogin()">ورود به پنل مدیریت</button>`;
+ document.getElementById("modal").classList.add("show");
+}
+function adminLogin(){
+ if(document.getElementById("adminPin").value!==db.adminPin)return toast("رمز مدیریت اشتباه است.");
+ session={mode:"admin"};localStorage.setItem(SESSIONKEY,JSON.stringify(session));closeModal();mode="admin";tab="dashboard";render();
+}
+function backCustomer(){mode="customer";session=null;localStorage.removeItem(SESSIONKEY);tab="home";render()}
+function adminApp(){
+ return `${topbar("پنل مدیریت")}<main class="container">${adminContent()}</main>`;
+}
+function adminContent(){
+ if(tab==="packs")return adminPacks();
+ if(tab==="foods")return adminFoods();
+ if(tab==="orders")return adminOrders();
+ if(tab==="reviews")return adminReviews();
+ if(tab==="gameAdmin")return adminGame();
+ if(tab==="chats")return adminChats();
+ if(tab==="users")return adminUsers();
+ if(tab==="bugs")return adminBugs();
+ if(tab==="settings")return settingsPage();
+ return adminDashboard();
+}
+function adminGame(){
+ const players=db.users.filter(u=>Number(u.gameScore||0)>0||Number(u.loyaltyPoints||0)>0);
+ const maxScore=players.reduce((m,u)=>Math.max(m,Number(u.gameScore||0)),0);
+ return `<section class="hero"><h1>🎮 مدیریت مینی‌گیم</h1><p>وضعیت بازی کاربران، امتیازها و قفل مرحله‌ها را از اینجا ببین.</p></section>
+ <div class="kpi">
+  <div class="card"><div class="muted">تعداد سؤال‌ها</div><b>${Array.isArray(QUESTIONS)?QUESTIONS.length:0}</b></div>
+  <div class="card"><div class="muted">بازیکنان فعال</div><b>${players.length}</b></div>
+  <div class="card"><div class="muted">بیشترین امتیاز</div><b>${maxScore}/1000</b></div>
+  <div class="card"><div class="muted">برندگان ۱۰۰۰ امتیاز</div><b>${players.filter(u=>Number(u.gameScore||0)>=1000).length}</b></div>
+ </div>
+ <div class="section-title"><h2>👥 وضعیت بازی کاربران</h2></div>
+ ${players.length?`<div class="tablewrap"><table><thead><tr><th>کاربر</th><th>امتیاز بازی</th><th>قلب</th><th>فرصت</th><th>امتیاز وفاداری</th><th>وضعیت قفل</th><th>عملیات</th></tr></thead><tbody>${players.map(u=>{const locked=Number(u.gameLockedUntil||0)>Date.now();return `<tr><td>${esc(u.name||"کاربر")}</td><td>${Number(u.gameScore||0)}/1000</td><td>❤️ ${Number(u.gameHearts||5)}/5</td><td>🎯 ${Number(u.gameOpportunities||5)}/5</td><td>${Number(u.loyaltyPoints||0)}</td><td>${locked?`⏳ تا ${formatDate(u.gameLockedUntil)}`:"آزاد"}</td><td><button class="btn red" onclick="resetUserGame('${u.id}')">ریست بازی</button> <button class="btn" onclick="addUserToGroupChat(\'${u.id}\')">👥 افزودن به چت گروهی</button></td></tr>`}).join("")}</tbody></table></div>`:`<div class="empty">هنوز کاربری امتیاز بازی ثبت نکرده است.</div>`}
+ <div class="card" style="margin-top:14px"><h3>ℹ️ قوانین فعلی بازی</h3><p class="muted">هر پاسخ درست ۲۰ امتیاز، زمان هر سؤال ۱۵ ثانیه، پنج قلب و با رسیدن به هر ۱۰۰ امتیاز قفل ۲ ساعته. سقف امتیاز ۱۰۰۰ است.</p></div>`;
+}
+function resetUserGame(id){
+ const u=db.users.find(x=>x.id===id);if(!u)return;
+ if(!confirm(`مینی‌گیم «${u.name||"این کاربر"}» ریست شود؟`))return;
+ u.gameScore=0;u.gameUsedQuestions=[];u.gameLockedUntil=0;u.gameHearts=5;u.gameOpportunities=5;u.pizzaRewardClaimed=false;
+ save();toast("مینی‌گیم کاربر ریست شد ✅");render();
+}
+
+function adminDashboard(){
+ const total=db.orders.reduce((s,o)=>s+o.total,0);
+ return `<section class="hero"><h1>⚙️ مدیریت کافه</h1><p>از بخش «پیشنهاد امروز / پک‌ها» پک‌های ترکیبی بساز و با قیمت تخفیفی خودت برای فروش قرار بده.</p></section>
+ <div class="kpi">
+  <div class="card"><div class="muted">کاربران</div><b>${db.users.length}</b></div>
+  <div class="card"><div class="muted">سفارش‌ها</div><b>${db.orders.length}</b></div>
+  <div class="card"><div class="muted">پک‌ها</div><b>${db.packs.length}</b></div>
+  <div class="card"><div class="muted">فروش</div><b>${money(total)}</b></div>
+  <div class="card"><div class="muted">باگ‌ها</div><b>${db.bugReports.length}</b></div>
+ </div>
+ <div class="section-title"><h2>پیشنهاد امروز</h2></div>
+ <div class="adminbox"><div class="field"><label>متن بالای صفحه مشتری</label><input id="dailyText" value="${esc(db.dailyText)}"></div>
+ <button class="btn primary" onclick="saveDaily()">ذخیره پیشنهاد امروز</button></div>
+ <div class="section-title"><h2>دسترسی سریع</h2></div>
+ <div class="grid">
+  <div class="card"><h3>🎁 پک تخفیفی</h3><p class="muted">پیتزا، ساندویچ، نوشیدنی و هر غذای دیگری را انتخاب کن، تعداد بده، تخفیف و قیمت نهایی را خودت تعیین کن.</p><button class="btn yellow" onclick="setTab('packs')">ساخت پک</button></div>
+  <div class="card"><h3>🍔 غذاها</h3><p class="muted">قیمت و وضعیت نمایش غذاها را مدیریت کن.</p><button class="btn primary" onclick="setTab('foods')">مدیریت غذاها</button></div>
+  <div class="card"><h3>📦 سفارش‌ها</h3><p class="muted">سفارش‌های مشتریان را ببین و وضعیتشان را تغییر بده.</p><button class="btn primary" onclick="setTab('orders')">مشاهده سفارش‌ها</button></div>
+ </div>`;
+}
+function saveDaily(){
+ db.dailyText=document.getElementById("dailyText").value.trim()||"پیشنهاد امروز را از اینجا ببینید 🎁";save();toast("پیشنهاد امروز ذخیره شد.");render();
+}
+
+/* Admin pack builder */
+function adminPacks(){
+ return `<div class="section-title"><h2>🎁 پیشنهاد امروز / پک‌های تخفیفی</h2><button class="btn green" onclick="openPackBuilder()">＋ افزودن پک جدید</button></div>
+ <div class="note">اینجا خودت انتخاب می‌کنی داخل پک چه چیزهایی باشد؛ مثلاً ۲ پیتزا + ۲ ساندویچ + ۲ لیموناد. سپس قیمت اصلی، درصد تخفیف و حتی قیمت نهایی را تنظیم می‌کنی. تاریخ و ساعت شروع/پایان کاملاً اختیاری است.</div><br>
+ <div class="grid">${db.packs.length?db.packs.map(adminPackCard).join(""):`<div class="empty" style="grid-column:1/-1">هنوز هیچ پک تخفیفی نساخته‌ای. روی «افزودن پک جدید» بزن.</div>`}</div>`;
+}
+function adminPackCard(p){
+ const active=isPackActive(p),o=packOriginal(p),f=packFinal(p);
+ return `<div class="card">
+  <div class="row"><h3>🎁 ${esc(p.name)}</h3><span class="badge ${active?"green":"red"}">${active?"فعال":"غیرفعال/خارج از زمان"}</span></div>
+  <p class="muted">${esc(p.description||"بدون توضیحات")}</p>
+  <div class="packitems">${p.items.map(it=>{const f=db.foods.find(x=>x.id===it.foodId);return f?`<div class="itemline"><span>${f.emoji} ${esc(f.name)}</span><b>×${it.qty}</b></div>`:""}).join("")}</div>
+  <div class="row"><span>قیمت اصلی</span><span class="old">${money(o)}</span></div>
+  <div class="row"><span>قیمت فروش</span><span class="price">${money(f)}</span></div>
+  <div class="row"><span>تخفیف</span><b>${packDiscount(p)}%</b></div>
+  <div class="muted" style="font-size:12px;margin-top:10px">${timeInfo(p)}</div>
+  <div class="row" style="margin-top:12px">
+   <button class="btn primary" onclick="openPackBuilder('${p.id}')">ویرایش</button>
+   <button class="btn ${p.active===false?"green":"yellow"}" onclick="togglePack('${p.id}')">${p.active===false?"فعال‌سازی":"غیرفعال‌سازی"}</button>
+   <button class="btn red" onclick="deletePack('${p.id}')">حذف</button>
+  </div>
+ </div>`;
+}
+function openPackBuilder(id=""){
+ const p=id?db.packs.find(x=>x.id===id):null;
+ const selected={};
+ (p?.items||[]).forEach(x=>selected[x.foodId]=Math.max(1,Number(x.qty)||1));
+
+ const rows=db.foods.filter(f=>f.active).map(f=>`<div class="row pack-menu-row" data-food-row="${f.id}" style="padding:10px;border-bottom:1px solid #1c3349">
+   <span style="flex:1">${f.emoji} ${esc(f.name)} <small class="muted">(${money(f.price)})</small></span>
+   <button type="button" class="btn primary" onclick="addPackFood('${f.id}')">＋ افزودن</button>
+ </div>`).join("");
+
+ document.getElementById("modalBox").innerHTML=`<h2>${p?"✏️ ویرایش پک":"🎁 ساخت پک تخفیفی جدید"}</h2>
+ <div class="formgrid">
+  <div class="field"><label>نام پک</label><input id="pName" value="${esc(p?.name||"پک ویژه امروز")}"></div>
+  <div class="field"><label>توضیحات</label><input id="pDesc" value="${esc(p?.description||"پک ویژه با تخفیف")}"></div>
+
+  <div class="field full">
+   <label>انتخاب اقلام پک</label>
+   <div class="note" style="margin-bottom:8px">
+    <strong>${p?"اقلام فعلی پک نمایش داده می‌شوند؛ می‌توانی تغییرشان بدهی.":"هیچ محصولی از قبل انتخاب نشده."}</strong>
+    هر محصولی را با «＋ افزودن» اضافه کن و تعداد را با + و − تنظیم کن.
+   </div>
+   <input id="packMenuSearch" placeholder="جستجو در منو؛ مثلاً پیتزا یا لیموناد..." oninput="filterPackMenu(this.value)">
+   <div id="packMenuList" class="adminbox" style="margin:8px 0 0;padding:8px">${rows}</div>
+   <div id="selectedPackItems" class="adminbox" style="margin:10px 0 0;padding:10px">${renderSelectedPackItems(selected)}</div>
+  </div>
+
+  <div class="field full">
+    <label>درصد تخفیف</label>
+    <div class="row wrap">
+      <input id="pDiscount" type="number" min="0" max="100" step="0.01"
+             value="${p?.discount??0}" placeholder="مثلاً 50"
+             style="flex:1" oninput="previewPackPrice()">
+      <button type="button" class="btn yellow" onclick="applyPackDiscount()">اعمال تخفیف</button>
+    </div>
+    <div id="discountApplyMsg" class="muted" style="margin-top:7px">مثلاً 50٪ یعنی قیمت نهایی نصف قیمت اصلی می‌شود.</div>
+  </div>
+
+  <div class="field full">
+    <div id="packPreview" class="note">محصولات را انتخاب کن تا قیمت محاسبه شود.</div>
+  </div>
+
+  <div class="field"><label>شروع - تاریخ و ساعت (اختیاری)</label>
+    <input id="pStart" type="datetime-local" value="${p?.startAt?toLocalDateTime(p.startAt):""}">
+  </div>
+  <div class="field"><label>پایان - تاریخ و ساعت (اختیاری)</label>
+    <input id="pEnd" type="datetime-local" value="${p?.endAt?toLocalDateTime(p.endAt):""}">
+  </div>
+ </div>
+
+ <div class="row wrap">
+   <button class="btn" onclick="closeModal()">لغو</button>
+   <button class="btn green" onclick="savePack('${id}')">💾 ذخیره پک و اعمال برای مشتری</button>
+ </div>`;
+
+ document.getElementById("modal").classList.add("show");
+ window.__packSelected=selected;
+ window.__packDiscountApplied=Number(p?.discount||0);
+ previewPackPrice();
+}
+
+function renderSelectedPackItems(selected=window.__packSelected||{}){
+ const entries=Object.entries(selected).filter(([,q])=>Number(q)>0);
+ if(!entries.length)return '<div class="muted" style="text-align:center;padding:10px">هنوز چیزی به پک اضافه نکرده‌ای.</div>';
+ return entries.map(([foodId,qty])=>{
+   const f=db.foods.find(x=>x.id===foodId);
+   if(!f)return "";
+   return `<div class="row" style="padding:9px 0;border-bottom:1px solid #20374e">
+     <div><b>${f.emoji} ${esc(f.name)}</b><div class="muted" style="font-size:12px">${money(f.price)} برای هر عدد</div></div>
+     <div class="qty">
+       <button type="button" class="btn" onclick="changePackFoodQty('${f.id}',-1)">−</button>
+       <b>${qty}</b>
+       <button type="button" class="btn" onclick="changePackFoodQty('${f.id}',1)">+</button>
+       <button type="button" class="btn red" onclick="removePackFood('${f.id}')">حذف</button>
+     </div>
+   </div>`;
+ }).join("");
+}
+
+function addPackFood(id){
+ window.__packSelected=window.__packSelected||{};
+ window.__packSelected[id]=(Number(window.__packSelected[id])||0)+1;
+ const el=document.getElementById("selectedPackItems");
+ if(el)el.innerHTML=renderSelectedPackItems();
+ previewPackPrice();
+}
+
+function changePackFoodQty(id,delta){
+ window.__packSelected=window.__packSelected||{};
+ const next=(Number(window.__packSelected[id])||0)+delta;
+ if(next<=0)delete window.__packSelected[id];
+ else window.__packSelected[id]=next;
+ const el=document.getElementById("selectedPackItems");
+ if(el)el.innerHTML=renderSelectedPackItems();
+ previewPackPrice();
+}
+
+function removePackFood(id){
+ if(window.__packSelected)delete window.__packSelected[id];
+ const el=document.getElementById("selectedPackItems");
+ if(el)el.innerHTML=renderSelectedPackItems();
+ previewPackPrice();
+}
+
+function filterPackMenu(q){
+ const term=(q||"").trim().toLowerCase();
+ document.querySelectorAll("#packMenuList .pack-menu-row").forEach(row=>{
+   row.style.display=row.innerText.toLowerCase().includes(term)?"flex":"none";
+ });
+}
+
+function getBuilderItems(){
+ return Object.entries(window.__packSelected||{}).map(([foodId,qty])=>({
+   foodId,
+   qty:Math.max(1,Number(qty)||1)
+ }));
+}
+
+function builderOriginal(){
+ return getBuilderItems().reduce((s,it)=>{
+   const f=db.foods.find(x=>x.id===it.foodId);
+   return s+(f?Number(f.price||0)*it.qty:0);
+ },0);
+}
+
+function toLocalDateTime(s){
+ const d=new Date(s);
+ if(isNaN(d))return "";
+ const p=n=>String(n).padStart(2,"0");
+ return `${d.getFullYear()}-${p(d.getMonth()+1)}T${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+
+function calculatedPackFinal(){
+ const original=builderOriginal();
+ const pct=Number(document.getElementById("pDiscount")?.value||0);
+ if(!original)return 0;
+ if(!Number.isFinite(pct))return original;
+ return Math.max(0,Math.round(original*(1-pct/100)));
+}
+
+function previewPackPrice(){
+ const el=document.getElementById("packPreview");
+ if(!el)return;
+ const o=builderOriginal();
+ const raw=Number(document.getElementById("pDiscount")?.value||0);
+ const d=Math.min(100,Math.max(0,Number.isFinite(raw)?raw:0));
+ const final=o?Math.max(0,Math.round(o*(1-d/100))):0;
+ el.innerHTML=`قیمت اصلی انتخاب‌ها: <b>${money(o)}</b>
+   <span style="margin:0 6px">|</span>
+   تخفیف: <b>${d}%</b>
+   <span style="margin:0 6px">|</span>
+   قیمت نهایی: <b class="price">${money(final)}</b>`;
+}
+
+function applyPackDiscount(){
+ const msg=document.getElementById("discountApplyMsg");
+ const input=document.getElementById("pDiscount");
+ const pct=Number(input?.value||0);
+ const original=builderOriginal();
+
+ if(!original){
+   if(msg)msg.textContent="اول حداقل یک محصول به پک اضافه کن.";
+   return;
+ }
+ if(!Number.isFinite(pct)||pct<0||pct>100){
+   if(msg)msg.textContent="درصد تخفیف باید بین 0 تا 100 باشد.";
+   return;
+ }
+
+ const final=Math.max(0,Math.round(original*(1-pct/100)));
+ window.__packDiscountApplied=pct;
+ previewPackPrice();
+
+ if(msg)msg.textContent=`تخفیف ${pct}% اعمال شد؛ قیمت نهایی ${money(final)} است.`;
+ toast(`تخفیف ${pct}% اعمال شد ✅`);
+}
+
+function savePack(id){
+ const name=document.getElementById("pName")?.value.trim();
+ const items=getBuilderItems();
+ if(!name)return toast("نام پک را وارد کن.");
+ if(!items.length)return toast("حداقل یک محصول را به پک اضافه کن.");
+
+ const start=document.getElementById("pStart")?.value||"";
+ const end=document.getElementById("pEnd")?.value||"";
+ if(start&&end&&new Date(start)>=new Date(end)){
+   return toast("زمان پایان باید بعد از زمان شروع باشد.");
+ }
+
+ let discount=Number(document.getElementById("pDiscount")?.value||0);
+ if(!Number.isFinite(discount)||discount<0||discount>100){
+   return toast("درصد تخفیف باید بین 0 تا 100 باشد.");
+ }
+ discount=Math.min(100,Math.max(0,discount));
+
+ const original=items.reduce((sum,it)=>{
+   const f=db.foods.find(x=>x.id===it.foodId);
+   return sum+(f?Number(f.price||0)*Number(it.qty||1):0);
+ },0);
+ if(original<=0)return toast("قیمت محصولات پک معتبر نیست.");
+
+ const finalPrice=Math.max(0,Math.round(original*(1-discount/100)));
+
+ const obj={
+   id:id||uid("pack"),
+   name,
+   description:document.getElementById("pDesc")?.value.trim()||"",
+   items,
+   discount,
+   finalPrice,
+   originalPrice:original,
+   startAt:start?new Date(start).toISOString():"",
+   endAt:end?new Date(end).toISOString():"",
+   active:true,
+   updatedAt:new Date().toISOString()
+ };
+
+ const index=db.packs.findIndex(x=>x.id===obj.id);
+ if(index>=0)db.packs[index]=obj;
+ else db.packs.unshift(obj);
+
+ save();
+ window.__packSelected={};
+ window.__packDiscountApplied=0;
+ closeModal();
+ toast("پک ذخیره شد و برای مشتریان نمایش داده می‌شود 🎉");
+ tab="packs";
+ render();
+}
+
+function togglePack(id){const p=db.packs.find(x=>x.id===id);if(!p)return;p.active=p.active===false;save();render()}
+function deletePack(id){if(!confirm("این پک حذف شود؟"))return;db.packs=db.packs.filter(x=>x.id!==id);save();render()}
+
+/* Foods + Categories */
+function categoryById(id){return db.categories.find(c=>c.id===id)}
+function categoryName(id){const c=categoryById(id);return c?c.name:"بدون دسته"}
+function foodImage(f){return f.image?`<img src="${f.image}" alt="" style="width:100%;height:180px;object-fit:cover;border-radius:14px;border:1px solid #29435e;margin-bottom:10px">`:`<div style="font-size:52px;text-align:center;padding:22px;background:#081523;border-radius:14px;margin-bottom:10px">${esc(f.emoji||"🍔")}</div>`}
+function adminFoods(){
+ const cats=db.categories||[];
+ return `<div class="section-title"><h2>🍔 مدیریت غذاها</h2><div class="row wrap"><button class="btn yellow" onclick="openCategoryManager()">🏷️ مدیریت دسته‌بندی‌ها</button><button class="btn green" onclick="openFoodBuilder()">＋ غذای جدید</button></div></div>
+ <div class="adminbox"><div class="row wrap"><div style="flex:1;min-width:220px"><label>جستجوی غذا</label><input id="foodSearch" placeholder="نام، توضیحات یا دسته..." oninput="filterFoodsAdmin()"></div><div style="min-width:200px"><label>دسته‌بندی</label><select id="foodCatFilter" onchange="filterFoodsAdmin()"><option value="">همه دسته‌ها</option>${cats.map(c=>`<option value="${c.id}">${c.emoji} ${esc(c.name)}</option>`).join("")}</select></div></div></div>
+ <div id="foodsGrid" class="grid">${db.foods.map(foodAdminCard).join("")}</div>`;
+}
+function foodAdminCard(f){
+ return `<div class="card food-admin-card" data-search="${esc((f.name+" "+(f.description||"")+" "+categoryName(f.categoryId)).toLowerCase())}" data-cat="${esc(f.categoryId||"")}">
+  ${foodImage(f)}<div class="row"><h3>${esc(f.name)}</h3><span class="badge">${esc(categoryName(f.categoryId))}</span></div>
+  ${f.description?`<p class="muted">${esc(f.description)}</p>`:""}
+  <div class="row"><div><span class="price">${money(f.price)}</span>${f.oldPrice?` <span class="old">${money(f.oldPrice)}</span>`:""}</div><span class="badge ${f.active?"green":"red"}">${f.active?"نمایش در فروشگاه":"مخفی"}</span></div>
+  <div class="row wrap" style="margin-top:12px"><button class="btn primary" onclick="openFoodBuilder('${f.id}')">✏️ ویرایش کامل</button><button class="btn" onclick="toggleFood('${f.id}')">${f.active?"مخفی":"نمایش"}</button><button class="btn red" onclick="deleteFood('${f.id}')">🗑️ حذف</button></div>
+ </div>`;
+}
+function filterFoodsAdmin(){
+ const q=(document.getElementById("foodSearch")?.value||"").toLowerCase().trim();
+ const c=document.getElementById("foodCatFilter")?.value||"";
+ document.querySelectorAll(".food-admin-card").forEach(x=>{
+   const okQ=!q||x.dataset.search.includes(q);
+   const okC=!c||x.dataset.cat===c;
+   x.style.display=(okQ&&okC)?"block":"none";
+ });
+}
+function openFoodBuilder(id=""){
+ const f=id?db.foods.find(x=>x.id===id):null;
+ const cats=db.categories||[];
+ document.getElementById("modalBox").innerHTML=`<h2>${f?"✏️ ویرایش کامل غذا":"🍔 افزودن غذای جدید"}</h2>
+ <div class="note">از این بخش می‌توانی عکس، دسته‌بندی، قیمت، توضیحات، مواد اولیه، برچسب‌ها، زمان آماده‌سازی و وضعیت غذا را مدیریت کنی.</div><br>
+ <div class="formgrid">
+  <div class="field full"><label>عکس غذا</label><input id="fImage" type="file" accept="image/*" onchange="previewFoodImage(this)"><div id="foodImagePreview" style="margin-top:8px">${f?.image?`<img src="${f.image}" style="max-width:100%;max-height:220px;border-radius:14px">`:""}</div><button type="button" class="btn red" style="margin-top:8px" onclick="removeFoodImage()">حذف عکس</button></div>
+  <div class="field"><label>نام غذا</label><input id="fName" value="${esc(f?.name||"")}" placeholder="مثلاً برگر ویژه"></div>
+  <div class="field"><label>دسته‌بندی</label><select id="fCategory">${cats.map(c=>`<option value="${c.id}" ${f?.categoryId===c.id?"selected":""}>${c.emoji} ${esc(c.name)}</option>`).join("")}<option value="">بدون دسته</option></select></div>
+  <div class="field"><label>قیمت فعلی (تومان)</label><input id="fPrice" type="number" min="0" value="${f?.price||0}"></div>
+  <div class="field"><label>قیمت قبل از تخفیف</label><input id="fOldPrice" type="number" min="0" value="${f?.oldPrice||0}" placeholder="اختیاری"></div>
+  <div class="field"><label>استیکر / ایموجی اختصاصی غذا</label><input id="fEmoji" value="${esc(f?.emoji||"🍔")}"></div>
+  <div class="field"><label>زمان آماده‌سازی (دقیقه)</label><input id="fPrep" type="number" min="0" value="${f?.prepTime||0}"></div>
+  <div class="field"><label>کالری تقریبی</label><input id="fCalories" type="number" min="0" value="${f?.calories||0}"></div>
+  <div class="field full"><label>توضیحات کوتاه</label><textarea id="fDesc" rows="3" placeholder="توضیح جذاب درباره غذا...">${esc(f?.description||"")}</textarea></div>
+  <div class="field full"><label>مواد اولیه</label><textarea id="fIngredients" rows="3" placeholder="مثلاً گوشت، پنیر، کاهو، سس...">${esc(f?.ingredients||"")}</textarea></div>
+  <div class="field full"><label>برچسب‌ها</label><input id="fTags" value="${esc((f?.tags||[]).join(", "))}" placeholder="پرفروش، جدید، تند"></div>
+  <div class="field"><label>وضعیت</label><select id="fActive"><option value="true" ${f?.active!==false?"selected":""}>نمایش در فروشگاه</option><option value="false" ${f?.active===false?"selected":""}>مخفی</option></select></div>
+  <div class="field"><label>ویژه / پیشنهادی</label><select id="fFeatured"><option value="false" ${!f?.featured?"selected":""}>خیر</option><option value="true" ${f?.featured?"selected":""}>بله</option></select></div>
+ </div><hr class="hr"><div class="row wrap"><button class="btn" onclick="closeModal()">لغو</button><button class="btn green" onclick="saveFood('${id}')">💾 ذخیره تغییرات</button></div>`;
+ document.getElementById("modal").classList.add("show");
+ window.__foodImage=f?.image||"";
+}
+function previewFoodImage(input){const file=input.files?.[0];if(!file)return;const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{const max=900,scale=Math.min(1,max/Math.max(img.width,img.height));const c=document.createElement("canvas");c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext("2d").drawImage(img,0,0,c.width,c.height);window.__foodImage=c.toDataURL("image/jpeg",.82);document.getElementById("foodImagePreview").innerHTML=`<img src="${window.__foodImage}" style="max-width:100%;max-height:220px;border-radius:14px">`};img.src=r.result};r.readAsDataURL(file)}
+function removeFoodImage(){window.__foodImage="";const p=document.getElementById("foodImagePreview");if(p)p.innerHTML="";const i=document.getElementById("fImage");if(i)i.value=""}
+function saveFood(id){
+ const name=document.getElementById("fName").value.trim(),price=Number(document.getElementById("fPrice").value),emoji=document.getElementById("fEmoji").value.trim()||"🍔";
+ if(!name||price<=0)return toast("نام و قیمت معتبر وارد کن.");
+ const data={name,price,emoji,image:window.__foodImage||"",categoryId:document.getElementById("fCategory").value,oldPrice:Number(document.getElementById("fOldPrice").value)||0,description:document.getElementById("fDesc").value.trim(),ingredients:document.getElementById("fIngredients").value.trim(),tags:document.getElementById("fTags").value.split(",").map(x=>x.trim()).filter(Boolean),prepTime:Number(document.getElementById("fPrep").value)||0,calories:Number(document.getElementById("fCalories").value)||0,active:document.getElementById("fActive").value==="true",featured:document.getElementById("fFeatured").value==="true"};
+ if(id){const f=db.foods.find(x=>x.id===id);Object.assign(f,data)}else db.foods.push({id:uid("food"),...data});
+ save();closeModal();toast("اطلاعات غذا ذخیره شد ✅");render();
+}
+function toggleFood(id){const f=db.foods.find(x=>x.id===id);if(f){f.active=!f.active;save();render()}}
+function deleteFood(id){const f=db.foods.find(x=>x.id===id);if(!f)return;if(!confirm(`غذای «${f.name}» حذف شود؟`))return;db.foods=db.foods.filter(x=>x.id!==id);save();render();}
+function openCategoryManager(){
+ document.getElementById("modalBox").innerHTML=`<h2>🏷️ مدیریت دسته‌بندی‌ها</h2><div class="note">دسته‌بندی بساز، نام و ایموجی آن را تغییر بده یا حذفش کن. حذف دسته، خود غذاها را حذف نمی‌کند.</div><div class="formgrid" style="margin-top:12px"><div class="field"><label>نام دسته جدید</label><input id="newCatName" placeholder="مثلاً پاستا"></div><div class="field"><label>ایموجی</label><input id="newCatEmoji" value="🍽️"></div></div><button class="btn green" style="width:100%" onclick="addCategory()">＋ ساخت دسته</button><hr class="hr"><div id="catList">${renderCategoryList()}</div>`;
+ document.getElementById("modal").classList.add("show");
+}
+function renderCategoryList(){return (db.categories||[]).map(c=>`<div class="row" style="padding:10px 0;border-bottom:1px solid #20374e"><div><b>${c.emoji} ${esc(c.name)}</b><div class="muted" style="font-size:12px">${db.foods.filter(f=>f.categoryId===c.id).length} غذا</div></div><div class="row"><button class="btn" onclick="renameCategory('${c.id}')">✏️ تغییر</button><button class="btn red" onclick="deleteCategory('${c.id}')">حذف</button></div></div>`).join("")||`<div class="empty">هنوز دسته‌ای ساخته نشده.</div>`}
+function addCategory(){const name=document.getElementById("newCatName").value.trim(),emoji=document.getElementById("newCatEmoji").value.trim()||"🍽️";if(!name)return toast("نام دسته را وارد کن.");if(db.categories.some(c=>c.name===name))return toast("این دسته قبلاً وجود دارد.");db.categories.push({id:uid("cat"),name,emoji});save();openCategoryManager();toast("دسته ساخته شد ✅")}
+function renameCategory(id){const c=db.categories.find(x=>x.id===id);if(!c)return;const name=prompt("نام جدید دسته:",c.name);if(name===null)return;c.name=name.trim()||c.name;const emoji=prompt("ایموجی دسته:",c.emoji);if(emoji!==null&&emoji.trim())c.emoji=emoji.trim();save();openCategoryManager()}
+function deleteCategory(id){const c=db.categories.find(x=>x.id===id);if(!c)return;if(db.foods.some(f=>f.categoryId===id)&&!confirm("این دسته غذا دارد. حذف شود؟ غذاها بدون دسته می‌شوند."))return;db.foods.forEach(f=>{if(f.categoryId===id)f.categoryId=""});db.categories=db.categories.filter(x=>x.id!==id);save();openCategoryManager()}
+
+/* Orders admin */
+function adminOrders(){
+ return `<div class="section-title"><h2>📦 سفارش‌های فعال مشتریان</h2><span class="badge">${db.orders.length} سفارش</span></div>
+ <div class="note" style="margin-bottom:12px">مدیریت ابتدا «تحویل شد» را می‌زند؛ سپس مشتری باید تحویل را تأیید کند. فقط بعد از هر دو تأیید، سفارش بسته و به سفارش‌های اخیر منتقل می‌شود.</div>
+ ${db.orders.length?`<div class="tablewrap"><table><thead><tr><th>سفارش</th><th>مشتری</th><th>اقلام</th><th>مبلغ</th><th>تحویل</th><th>وضعیت</th></tr></thead><tbody>
+ ${db.orders.map(o=>`<tr><td>${esc(o.id)}</td><td>${esc(o.name)}<br><small>${esc(o.phone)}</small></td><td>${o.items.map(i=>esc(i.name)+" × "+i.qty).join("<br>")}</td><td>${money(o.total)}</td><td>${esc(o.address)}${o.note?`<br><small>${esc(o.note)}</small>`:""}</td><td><select onchange="setOrderStatus('${o.id}',this.value)">${["در حال آماده‌سازی","در حال ارسال","تحویل شد","ناموجود"].map(s=>`<option ${o.status===s?"selected":""}>${s}</option>`).join("")}</select>${o.adminDeliveredAt&&!o.customerConfirmedAt?`<div class="badge yellow" style="margin-top:6px">منتظر تأیید مشتری</div>`:""}</td></tr>`).join("")}
+ </tbody></table></div>`:`<div class="empty">هیچ سفارش فعالی وجود ندارد.</div>`}`;
+}
+function setOrderStatus(id,status){
+ const o=db.orders.find(x=>x.id===id);if(!o)return;
+ if(status==="تحویل شد"){o.status="تحویل شد";o.adminDeliveredAt=new Date().toISOString();if(o.customerConfirmedAt){o.closedAt=o.customerConfirmedAt;db.recentOrders.unshift(clone(o));db.orders=db.orders.filter(x=>x.id!==id);}}
+ else {o.status=status;if(status!=="تحویل شد")o.adminDeliveredAt=null;}
+ save();toast(status==="تحویل شد"?"تحویل ثبت شد؛ منتظر تأیید مشتری است.":"وضعیت سفارش تغییر کرد.");render();
+}
+
+/* Reviews */
+function canReviewFood(foodId){const u=currentUser();if(!u)return false;return db.recentOrders.some(o=>o.userId===u.id&&o.items.some(i=>i.id===foodId));}
+function openLatestReview(foodId){
+ const u=currentUser();if(!u)return openAuth();
+ const order=db.recentOrders.filter(o=>o.userId===u.id&&o.items?.some(i=>i.id===foodId)).sort((a,b)=>new Date(b.closedAt||b.createdAt)-new Date(a.closedAt||a.createdAt))[0];
+ if(!order)return toast("برای ثبت نظر، ابتدا باید این غذا را سفارش داده و تحویل گرفته باشی.");
+ openReviewForFood(order.id,foodId);
+}
+function openReviewForFood(orderId,foodId){
+ const u=currentUser();if(!u)return openAuth();const o=db.recentOrders.find(x=>x.id===orderId);if(!o||o.userId!==u.id)return;
+ const old=db.reviews.find(r=>r.userId===u.id&&r.foodId===foodId&&r.orderId===orderId);
+ const f=db.foods.find(x=>x.id===foodId);if(!f)return;
+ document.getElementById("modalBox").innerHTML=`<h2>⭐ ثبت رضایت از ${esc(f.name)}</h2><div class="field"><label>امتیاز</label><select id="reviewStars"><option value="5">★★★★★ ۵ ستاره</option><option value="4">★★★★☆ ۴ ستاره</option><option value="3">★★★☆☆ ۳ ستاره</option><option value="2">★★☆☆☆ ۲ ستاره</option><option value="1">★☆☆☆☆ ۱ ستاره</option></select></div><div class="field"><label>نظر شما</label><textarea id="reviewText" rows="5" maxlength="500" placeholder="تجربه‌ات را بنویس...">${esc(old?.text||"")}</textarea></div><button class="btn green" style="width:100%" onclick="submitReview('${orderId}','${foodId}')">ارسال برای تأیید مدیریت</button>`;document.getElementById("modal").classList.add("show");
+}
+function submitReview(orderId,foodId){
+ const u=currentUser(),text=document.getElementById("reviewText").value.trim(),stars=Number(document.getElementById("reviewStars").value);
+ if(!u||!canReviewFood(foodId)||!stars||!text)return toast("امتیاز و متن نظر را کامل کن.");
+ const old=db.reviews.find(r=>r.userId===u.id&&r.foodId===foodId&&r.orderId===orderId);
+ if(old){old.stars=stars;old.text=text;old.status="approved";old.updatedAt=new Date().toISOString();}else db.reviews.push({id:uid("rev"),orderId,userId:u.id,userName:u.name,foodId,stars,text,status:"approved",createdAt:new Date().toISOString()});
+ save();closeModal();toast("نظر ثبت شد و برای همه حساب‌ها نمایش داده شد ⭐");render();
+}
+function showFoodReviews(foodId){
+ const f=db.foods.find(x=>x.id===foodId);if(!f)return;const rows=db.reviews.filter(r=>r.foodId===foodId&&r.status==="approved");
+ document.getElementById("modalBox").innerHTML=`<h2>💬 نظرهای ${esc(f.name)}</h2>${rows.length?rows.map(r=>`<div class="card" style="margin-bottom:10px"><div class="row"><b>${esc(r.userName||"مشتری")}</b><span>${"★".repeat(Number(r.stars))}${"☆".repeat(5-Number(r.stars))}</span></div><p style="margin-bottom:0">${esc(r.text)}</p><div class="muted" style="font-size:12px;margin-top:6px">${formatDate(r.createdAt)}</div></div>`).join(""):`<div class="empty">هنوز نظر تأییدشده‌ای برای این غذا وجود ندارد.</div>`}<button class="btn" style="width:100%;margin-top:10px" onclick="closeModal()">بستن</button>`;document.getElementById("modal").classList.add("show");
+}
+function adminReviews(){
+ const pending=db.reviews.filter(r=>r.status!=="approved");
+ return `<div class="section-title"><h2>⭐ مدیریت رضایت مشتریان</h2><span class="badge">${pending.length} منتظر بررسی</span></div>${db.reviews.length?db.reviews.map(r=>{const f=db.foods.find(x=>x.id===r.foodId);return `<div class="card" style="margin-bottom:10px"><div class="row"><b>${esc(f?.name||"غذا حذف شده")}</b><span>${"★".repeat(Number(r.stars))}${"☆".repeat(5-Number(r.stars))}</span></div><div class="muted">${esc(r.userName)} • ${formatDate(r.createdAt)}</div><p>${esc(r.text)}</p><div class="row wrap"><button class="btn green" onclick="moderateReview('${r.id}','approved')">تأیید و نمایش عمومی</button><button class="btn red" onclick="moderateReview('${r.id}','rejected')">رد</button></div></div>`}).join(""):`<div class="empty">هنوز نظری ثبت نشده است.</div>`}`;
+}
+function moderateReview(id,status){const r=db.reviews.find(x=>x.id===id);if(!r)return;r.status=status;save();toast(status==="approved"?"نظر تأیید و عمومی شد.":"نظر رد شد.");render();}
+
+/* Chat + profile */
+function userDisplay(u){return u?.name||"کاربر"}
+function isBlockedBetween(a,b){return !!(a&&b&&((a.blockedUsers||[]).includes(b.id)||(b.blockedUsers||[]).includes(a.id)))}
+function directChatFor(a,b){
+ const ids=[a,b].sort();
+ return db.chats.find(c=>c.type==="direct" && (c.memberIds||[]).length===2 && (c.memberIds||[]).slice().sort().join("|")===ids.join("|"));
+}
+function chatsPage(){
+ const u=currentUser();if(!u)return homePage();
+ const visibleUsers=db.users.filter(x=>x.id!==u.id&&!isBannedUser(x)&&!isBlockedBetween(u,x));
+ const myChats=db.chats.filter(c=>c.type==="direct"&&(c.memberIds||[]).includes(u.id));
+ let active=window.__activeChat;
+ const activeChat=myChats.find(c=>c.id===active)||null;
+ return `<section class="hero"><h1>💬 چت خصوصی</h1><p>نام کاربر را جستجو کن و وارد گفت‌وگوی خصوصی شو.</p>
+   <div class="field"><label>🔎 جستجوی کاربر</label><input id="chatUserSearch" autocomplete="off" placeholder="نام کاربر را بنویس..." oninput="filterChatUsers(this.value)"></div>
+   <div id="chatUserResults">${chatUserResults(visibleUsers,u.id,"")}</div>
+ </section>
+ <div class="grid"><div class="card"><h3>💬 گفتگوهای من</h3>
+   <div id="myDirectChats">${myChats.length?myChats.map(c=>{const other=(c.memberIds||[]).find(id=>id!==u.id);const target=db.users.find(x=>x.id===other);return `<button class="btn ${active===c.id?"primary":""}" style="width:100%;margin:5px 0;text-align:right" onclick="openChat('${c.id}')">💬 ${esc(target?.name||c.name||"کاربر")}</button>`}).join(""):`<div class="empty">هنوز گفت‌وگویی نداری.</div>`}</div>
+ </div><div class="card">${activeChat?renderChatWindow(activeChat,u.id):`<div class="empty">از جستجو یک کاربر را انتخاب کن.</div>`}</div></div>`;
+}
+function chatUserResults(users,myId,q){
+ const query=String(q||"").trim().toLocaleLowerCase();
+ const list=users.filter(x=>!query||String(x.name||"").toLocaleLowerCase().includes(query));
+ if(!list.length)return `<div class="empty">کاربری با این نام پیدا نشد.</div>`;
+ return list.map(x=>`<div class="row" style="padding:10px 0;border-bottom:1px solid #20374e"><div><b>${esc(x.name)}</b><div class="muted" style="font-size:12px">${x.onlineVisible!==false&&x.online?"🟢 آنلاین":"⚪ آفلاین"}</div></div><button class="btn primary" onclick="startDirectChatWith('${x.id}')">پیام</button></div>`).join("");
+}
+function filterChatUsers(q){
+ const u=currentUser();if(!u)return;
+ const visible=db.users.filter(x=>x.id!==u.id&&!isBannedUser(x)&&!isBlockedBetween(u,x));
+ const box=document.getElementById("chatUserResults");if(box)box.innerHTML=chatUserResults(visible,u.id,q);
+}
+function renderChatWindow(c,myId){
+ const msgs=db.messages.filter(m=>m.chatId===c.id).sort((a,b)=>new Date(a.createdAt)-new Date(b.createdAt));
+ const otherId=(c.memberIds||[]).find(id=>id!==myId);const other=db.users.find(x=>x.id===otherId);
+ const action=otherId?`<div class="row wrap"><button class="btn red" onclick="blockUser('${otherId}')">🚫 بلاک کاربر</button><button class="btn red" onclick="reportUser('${otherId}')">🚨 گزارش تخلف</button></div>`:"";
+ return `<div class="row"><h3>💬 ${esc(other?.name||c.name||"گفت‌وگوی خصوصی")}</h3><span class="badge">خصوصی</span></div>${action}
+ <div id="chatMessages" style="max-height:430px;overflow:auto;margin:12px 0">${msgs.length?msgs.map(m=>`<div class="card" style="margin:7px 0;background:${m.userId===myId?"#12314a":"#0b1828"}"><b>${esc(m.userName)}</b><div>${esc(m.text)}</div><small class="muted">${formatDate(m.createdAt)}</small></div>`).join(""):`<div class="empty">هنوز پیامی نیست. اولین پیام را بفرست.</div>`}</div>
+ <div class="row" style="align-items:flex-end"><textarea id="chatInput" rows="2" autocomplete="off" placeholder="پیامت را بنویس..." style="flex:1;resize:none" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChatMessage('${c.id}')}"></textarea><button class="btn primary" onclick="sendChatMessage('${c.id}')">ارسال ➤</button></div><div class="muted" style="font-size:11px;margin-top:5px">Enter = ارسال • Shift+Enter = خط جدید</div>`;
+}
+function openChat(id){
+ const c=db.chats.find(x=>x.id===id&&x.type==="direct");if(!c)return;
+ window.__activeChat=id;render();setTimeout(()=>{const box=document.getElementById("chatMessages");if(box)box.scrollTop=box.scrollHeight;const input=document.getElementById("chatInput");if(input)input.focus()},50);
+}
+function startDirectChatWith(targetId){
+ const u=currentUser(),target=db.users.find(x=>x.id===targetId);
+ if(!u||!target||isBlockedBetween(u,target)||isBannedUser(target))return toast("این کاربر در دسترس نیست.");
+ let c=directChatFor(u.id,target.id);
+ if(!c){c={id:uid("chat"),type:"direct",name:target.name,memberIds:[u.id,target.id],createdAt:new Date().toISOString()};db.chats.push(c)}
+ save();window.__activeChat=c.id;render();setTimeout(()=>document.getElementById("chatInput")?.focus(),80);
+}
+function sendChatMessage(chatId){
+ const u=currentUser(),el=document.getElementById("chatInput"),text=el?.value.trim();
+ if(!u||!text)return;
+ const c=db.chats.find(x=>x.id===chatId&&x.type==="direct");
+ if(!c||(c.memberIds||[]).indexOf(u.id)<0)return;
+ const otherId=(c.memberIds||[]).find(id=>id!==u.id);const target=db.users.find(x=>x.id===otherId);
+ if(target&&isBlockedBetween(u,target))return toast("این گفت‌وگو به‌دلیل بلاک قابل ارسال نیست.");
+ db.messages.push({id:uid("msg"),chatId,userId:u.id,userName:u.name,text,createdAt:new Date().toISOString()});
+ save();el.value="";render();window.__activeChat=chatId;setTimeout(()=>{const box=document.getElementById("chatMessages");if(box)box.scrollTop=box.scrollHeight;document.getElementById("chatInput")?.focus()},50);
+}
+function blockUser(id){const u=currentUser(),target=db.users.find(x=>x.id===id);if(!u||!target)return;if(!confirm(`کاربر «${target.name}» بلاک شود؟`))return;u.blockedUsers=u.blockedUsers||[];if(!u.blockedUsers.includes(id))u.blockedUsers.push(id);save();window.__activeChat=null;toast("کاربر بلاک شد.");render()}
+function reportUser(id){const u=currentUser(),target=db.users.find(x=>x.id===id);if(!u||!target)return;const reason=prompt(`توضیح تخلف «${target.name}» را بنویس:`);if(!reason||!reason.trim())return;db.reports=db.reports||[];db.reports.unshift({id:uid("report"),reporterId:u.id,reporterName:u.name,targetId:target.id,targetName:target.name,reason:reason.trim(),status:"جدید",createdAt:new Date().toISOString()});save();toast("گزارش برای مدیر ارسال شد 🚨")}
+
+function profilePage(){const u=currentUser();if(!u)return homePage();return `<div class="section-title"><h2>👤 پروفایل من</h2></div><div class="card"><div class="row"><div><h3>${esc(u.name)}</h3><div class="muted">${esc(u.phone)}</div></div><span class="badge ${u.online?"green":""}">${u.online?"آنلاین":"آفلاین"}</span></div><hr class="hr"><label>نمایش وضعیت آنلاین برای مشتریان دیگر</label><select id="onlineVisible" onchange="toggleOnlineVisibility(this.value)"><option value="true" ${u.onlineVisible!==false?"selected":""}>نمایش بده</option><option value="false" ${u.onlineVisible===false?"selected":""}>مخفی کن</option></select><div class="note" style="margin-top:12px">مدیریت همیشه وضعیت واقعی و آخرین زمان فعالیت را برای نظارت می‌بیند.</div><hr class="hr"><div class="field"><label>آدرس ذخیره‌شده</label><textarea id="savedAddress" rows="2">${esc(u.savedAddress||"")}</textarea></div><div class="field"><label>پلاک ذخیره‌شده</label><input id="savedPlaque" value="${esc(u.savedPlaque||"")}"></div><button class="btn green" style="width:100%" onclick="saveCustomerAddress()">💾 ذخیره آدرس و پلاک</button></div>`}
+function saveCustomerAddress(){const u=currentUser();if(!u)return;u.savedAddress=document.getElementById("savedAddress")?.value.trim()||"";u.savedPlaque=document.getElementById("savedPlaque")?.value.trim()||"";save();toast("آدرس و پلاک ذخیره شد ✅");render()}
+function toggleOnlineVisibility(v){const u=currentUser();if(!u)return;u.onlineVisible=v==="true";save();toast(u.onlineVisible?"وضعیت آنلاین برای دیگران قابل مشاهده شد.":"وضعیت آنلاین برای دیگران مخفی شد.");render()}
+function adminChats(){
+  /* ADMIN: create group/private chat shortcut */
+  const adminCreateChatBtn = `<button class="btn" onclick="adminCreateChat()">➕ ساخت چت</button>`;
+return `<div class="section-title"><h2>💬 نظارت چت‌ها</h2><span class="badge">${db.chats.length} گفت‌وگو</span></div>${db.chats.length?db.chats.map(c=>{const msgs=db.messages.filter(m=>m.chatId===c.id);return `<div class="card" style="margin-bottom:12px"><div class="row"><b>${c.type==="group"?"👥":"💬"} ${esc(c.name)}</b><span class="badge">${c.memberIds.length} عضو</span></div><div class="muted">اعضا: ${c.memberIds.map(id=>esc(userDisplay(db.users.find(u=>u.id===id)))).join("، ")}</div><div style="margin-top:10px">${msgs.map(m=>`<div class="itemline"><span><b>${esc(m.userName)}:</b> ${esc(m.text)}</span><button class="btn red" onclick="deleteChatMessage('${m.id}')">حذف</button></div>`).join("")||`<div class="empty">پیامی نیست.</div>`}</div></div>`}).join(""):`<div class="empty">هنوز چتی ساخته نشده است.</div>`}`}
+function deleteChatMessage(id){db.messages=db.messages.filter(m=>m.id!==id);save();render()}
+function adminUsers(){
+  /* ADMIN: group-add helper */
+
+ return `<div class="section-title"><h2>👥 کاربران و وضعیت آنلاین</h2><span class="badge">${db.users.length} کاربر</span></div>
+ <div class="tablewrap"><table><thead><tr><th>نام</th><th>شماره</th><th>وضعیت</th><th>عملیات</th></tr></thead><tbody>${db.users.map(u=>`<tr><td>${esc(u.name)}</td><td>${esc(u.phone)}</td><td><span class="badge ${isBannedUser(u)?"red":u.online?"green":""}">${isBannedUser(u)?"مسدود":u.online?"آنلاین":"آفلاین"}</span></td><td><button class="btn ${isBannedUser(u)?"green":"red"}" onclick="${isBannedUser(u)?`unbanUser('${u.id}')`:`banUser('${u.id}')`}">${isBannedUser(u)?"رفع بن":"بن کاربر"}</button><button class="btn" onclick="removeUser('${u.id}')">اخراج کامل</button></td></tr>`).join("")}</tbody></table></div>
+ <div class="section-title"><h2>🚨 گزارش تخلف</h2><span class="badge">${(db.reports||[]).filter(r=>r.status!=="بررسی شد").length} جدید</span></div>
+ ${(db.reports||[]).length?(db.reports||[]).map(r=>`<div class="card" style="margin-bottom:10px"><div class="row"><b>${esc(r.reporterName)} ← ${esc(r.targetName)}</b><span class="badge">${esc(r.status)}</span></div><p>${esc(r.reason)}</p><div class="row wrap"><button class="btn red" onclick="banUser('${r.targetId}','${r.id}')">بن کاربر</button><button class="btn" onclick="removeUser('${r.targetId}','${r.id}')">اخراج کامل</button><button class="btn green" onclick="closeReport('${r.id}')">بررسی شد</button></div></div>`).join(""):`<div class="empty">گزارش تخلفی ثبت نشده است.</div>`}`;
+}
+function banUser(id,reportId=""){const u=db.users.find(x=>x.id===id);if(!u)return;u.banned=true;db.bannedUsers=db.bannedUsers||[];if(!db.bannedUsers.includes(id))db.bannedUsers.push(id);if(reportId)closeReport(reportId,true);save();toast("کاربر بن شد.");render()}
+function unbanUser(id){const u=db.users.find(x=>x.id===id);if(!u)return;u.banned=false;db.bannedUsers=(db.bannedUsers||[]).filter(x=>x!==id);save();toast("بن کاربر برداشته شد.");render()}
+function removeUser(id,reportId=""){if(!confirm("این کاربر و دسترسی او از برنامه حذف شود؟"))return;db.users=db.users.filter(x=>x.id!==id);db.chats=db.chats.filter(c=>!(c.memberIds||[]).includes(id));db.messages=db.messages.filter(m=>m.userId!==id);db.bannedUsers=(db.bannedUsers||[]).filter(x=>x!==id);if(reportId)closeReport(reportId,true);save();toast("کاربر اخراج شد.");render()}
+function closeReport(id,silent=false){const r=(db.reports||[]).find(x=>x.id===id);if(!r)return;r.status="بررسی شد";r.reviewedAt=new Date().toISOString();save();if(!silent){toast("گزارش بررسی شد.");render()}}
+
+
+
+/* ☁️ Lemonade Cloud Chat - online layer */
+const CLOUD_API_BASE = (localStorage.getItem('LEMONADE_CLOUD_URL') || '').replace(/\/$/, '');
+let cloudToken=safeLocalGet('LEMONADE_CLOUD_TOKEN','');
+let cloudUsers=[];let cloudChats=[];let cloudSocket=null;let cloudBooted=false;
+function cloudEnabled(){return !!(CLOUD_API_BASE&&cloudToken)}
+async function cloudFetch(path,opts={}){
+ const h=Object.assign({'Content-Type':'application/json'},opts.headers||{});if(cloudToken)h.Authorization='Bearer '+cloudToken;
+ const r=await fetch(CLOUD_API_BASE+path,Object.assign({},opts,{headers:h}));
+ let j={};try{j=await r.json()}catch{}
+ if(!r.ok){const err=new Error(j.error||'خطای ارتباط با سرور');err.status=r.status;throw err;}return j;
+}
+function mergeCloudUser(x){if(!x?.id)return;let u=db.users.find(a=>a.id===x.id);if(!u){u={id:x.id,name:x.name,phone:x.phone,password:'',points:0,createdAt:x.createdAt||new Date().toISOString(),online:false,onlineVisible:x.onlineVisible!==false,lastSeenAt:x.lastSeenAt||null,savedAddress:'',savedPlaque:'',banned:!!x.banned,blockedUsers:[]};db.users.push(u)}Object.assign(u,{name:x.name,phone:x.phone,online:!!x.online,onlineVisible:x.onlineVisible!==false,lastSeenAt:x.lastSeenAt||null,banned:!!x.banned});return u}
+async function cloudRefresh(){if(!cloudEnabled())return;try{const [u,c]=await Promise.all([cloudFetch('/api/users'),cloudFetch('/api/chats')]);cloudUsers=u.users||[];cloudChats=c.chats||[];cloudUsers.forEach(mergeCloudUser);for(const ch of cloudChats){let old=db.chats.find(x=>x.id===ch.id);if(!old)db.chats.push({id:ch.id,type:ch.type,name:'',memberIds:ch.memberIds,createdAt:ch.createdAt});else old.memberIds=ch.memberIds;}safeLocalSet(DBKEY,JSON.stringify(db));}catch(e){console.warn('cloud refresh',e.message)}}
+async function cloudLoadMessages(chatId){if(!cloudEnabled())return;try{const r=await cloudFetch('/api/chats/'+encodeURIComponent(chatId)+'/messages');db.messages=db.messages.filter(m=>m.chatId!==chatId).concat(r.messages||[]);safeLocalSet(DBKEY,JSON.stringify(db));}catch(e){console.warn('messages',e.message)}}
+function cloudConnectSocket(){if(!cloudEnabled()||cloudSocket)return;const proto=location.protocol==='https:'?'wss':'ws';const base=(location.protocol==='http:'||location.protocol==='https:')?proto+'://'+location.host:'';const url=base+'/ws?token='+encodeURIComponent(cloudToken);try{cloudSocket=new WebSocket(url);cloudSocket.onmessage=e=>{try{const x=JSON.parse(e.data);if(x.type==='message'){if(!db.messages.some(m=>m.id===x.message.id))db.messages.push(x.message);safeLocalSet(DBKEY,JSON.stringify(db));if(window.__activeChat===x.message.chatId)render()}else if(x.type==='user.created'||x.type==='presence'){mergeCloudUser(x.user);safeLocalSet(DBKEY,JSON.stringify(db));if(tab==='chat')render()}else if(x.type==='chat.created'){if(!db.chats.some(c=>c.id===x.chat.id))db.chats.push(x.chat);safeLocalSet(DBKEY,JSON.stringify(db));if(tab==='chat')render()}}catch{}};cloudSocket.onclose=()=>{cloudSocket=null;if(cloudToken)setTimeout(cloudConnectSocket,3000)};}catch{cloudSocket=null}}
+async function cloudRegister(name,phone,password){const r=await cloudFetch('/api/register',{method:'POST',body:JSON.stringify({name,phone,password})});cloudToken=r.token;localStorage.setItem('LEMONADE_CLOUD_TOKEN',cloudToken);mergeCloudUser(r.user);cloudBooted=true;cloudConnectSocket();await cloudRefresh();return r.user}
+async function cloudLogin(phone,password){const r=await cloudFetch('/api/login',{method:'POST',body:JSON.stringify({phone,password})});cloudToken=r.token;localStorage.setItem('LEMONADE_CLOUD_TOKEN',cloudToken);mergeCloudUser(r.user);cloudBooted=true;cloudConnectSocket();await cloudRefresh();return r.user}
+async function cloudLogout(){try{if(cloudEnabled())await cloudFetch('/api/logout',{method:'POST'})}catch{}localStorage.removeItem('LEMONADE_CLOUD_TOKEN');cloudToken='';if(cloudSocket){cloudSocket.close();cloudSocket=null}}
+
+/* Cloud-first auth overrides */
+async function login(){
+ const p=document.getElementById('aPhone')?.value.trim(),pass=document.getElementById('aPass')?.value||'';
+ if(!p||!pass)return toast('شماره و رمز را کامل کنید.');
+ if(CLOUD_API_BASE){
+  try{const u=await cloudLogin(p,pass);if(isBannedUser(u))return toast('این حساب توسط مدیریت مسدود شده است.');session={mode:'customer',userId:u.id};safeLocalSet(SESSIONKEY,JSON.stringify(session));closeModal();tab='home';render();return;}
+  catch(e){if(e?.status===401||e?.status===403)return toast(e.message||'شماره یا رمز اشتباه است.');console.warn('cloud login unavailable; using local account',e);}
+ }
+ const u=db.users.find(x=>String(x.phone)===String(p)&&String(x.password)===String(pass));
+ if(!u)return toast('شماره یا رمز اشتباه است.');
+ if(isBannedUser(u))return toast('این حساب توسط مدیریت مسدود شده است.');
+ session={mode:'customer',userId:u.id};u.online=true;u.lastSeenAt=new Date().toISOString();save();safeLocalSet(SESSIONKEY,JSON.stringify(session));closeModal();tab='home';render();
+}
+async function register(){
+ const name=document.getElementById('aName')?.value.trim(),p=document.getElementById('aPhone')?.value.trim(),pass=document.getElementById('aPass')?.value||'';
+ if(!name||!p||!pass)return toast('همه موارد را کامل کنید.');
+ if(CLOUD_API_BASE){
+  try{const u=await cloudRegister(name,p,pass);session={mode:'customer',userId:u.id};safeLocalSet(SESSIONKEY,JSON.stringify(session));closeModal();toast('حساب آنلاین ساخته شد 🎉');render();return;}
+  catch(e){if(e?.status===409)return toast(e.message||'این شماره قبلاً ثبت شده است.');console.warn('cloud register unavailable; using local account',e);}
+ }
+ if(db.users.some(u=>String(u.phone)===String(p)))return toast('این شماره قبلاً ثبت شده.');
+ const u={id:uid('usr'),name,phone:p,password:pass,points:0,createdAt:new Date().toISOString(),online:true,onlineVisible:true,lastSeenAt:new Date().toISOString(),savedAddress:'',savedPlaque:'',banned:false,blockedUsers:[]};
+ db.users.push(u);save();session={mode:'customer',userId:u.id};safeLocalSet(SESSIONKEY,JSON.stringify(session));closeModal();toast('حساب ساخته شد 🎉');render();
+}
+async function logout(){const u=currentUser();if(CLOUD_API_BASE&&cloudToken)await cloudLogout();if(u){u.online=false;u.lastSeenAt=new Date().toISOString();safeLocalSet(DBKEY,JSON.stringify(db))}session=null;localStorage.removeItem(SESSIONKEY);tab='home';render()}
+
+/* Cloud-first private chat overrides */
+function chatsPage(){
+ const u=currentUser();if(!u)return homePage();
+ if(cloudEnabled()&&!cloudBooted){cloudBooted=true;cloudRefresh().then(()=>render()).catch(()=>{});}
+ const users=(cloudUsers.length?cloudUsers:db.users.filter(x=>x.id!==u.id)).filter(x=>x.id!==u.id&&!isBannedUser(x)&&!isBlockedBetween(u,x));
+ const myChats=(cloudChats.length?cloudChats:db.chats).filter(c=>c.type==='direct'&&(c.memberIds||[]).includes(u.id));
+ const active=window.__activeChat;const activeChat=myChats.find(c=>c.id===active)||null;
+ return `<section class="hero"><h1>💬 چت خصوصی</h1><p>نام کاربر را جستجو کن و وارد گفت‌وگوی خصوصی شو.</p><div class="field"><label>🔎 جستجوی کاربر</label><input id="chatUserSearch" autocomplete="off" placeholder="نام کاربر را بنویس..." oninput="filterChatUsers(this.value)"></div><div id="chatUserResults">${chatUserResults(users,u.id,'')}</div></section><div class="grid"><div class="card"><h3>💬 گفتگوهای من</h3><div id="myDirectChats">${myChats.length?myChats.map(c=>{const other=(c.memberIds||[]).find(id=>id!==u.id);const target=(cloudUsers.find(x=>x.id===other)||db.users.find(x=>x.id===other));return `<button class="btn ${active===c.id?'primary':''}" style="width:100%;margin:5px 0;text-align:right" onclick="openChat('${c.id}')">💬 ${esc(target?.name||c.name||'کاربر')}</button>`}).join(''):`<div class="empty">هنوز گفت‌وگویی نداری.</div>`}</div></div><div class="card">${activeChat?renderChatWindow(activeChat,u.id):`<div class="empty">از جستجو یک کاربر را انتخاب کن.</div>`}</div></div>`;
+}
+function filterChatUsers(q){const u=currentUser();if(!u)return;const users=(cloudUsers.length?cloudUsers:db.users).filter(x=>x.id!==u.id&&!isBannedUser(x)&&!isBlockedBetween(u,x));const box=document.getElementById('chatUserResults');if(box)box.innerHTML=chatUserResults(users,u.id,q)}
+async function openChat(id){const c=(cloudChats.find(x=>x.id===id)||db.chats.find(x=>x.id===id));if(!c)return;window.__activeChat=id;if(cloudEnabled())await cloudLoadMessages(id);render();setTimeout(()=>{const box=document.getElementById('chatMessages');if(box)box.scrollTop=box.scrollHeight;document.getElementById('chatInput')?.focus()},50)}
+async function startDirectChatWith(targetId){const u=currentUser(),target=(cloudUsers.find(x=>x.id===targetId)||db.users.find(x=>x.id===targetId));if(!u||!target)return toast('کاربر پیدا نشد.');if(isBlockedBetween(u,target)||isBannedUser(target))return toast('این کاربر در دسترس نیست.');if(CLOUD_API_BASE&&cloudToken){try{const r=await cloudFetch('/api/chats/direct',{method:'POST',body:JSON.stringify({targetId})});if(!db.chats.some(x=>x.id===r.chat.id))db.chats.push(r.chat);if(!cloudChats.some(x=>x.id===r.chat.id))cloudChats.push(r.chat);window.__activeChat=r.chat.id;await cloudLoadMessages(r.chat.id);render();setTimeout(()=>document.getElementById('chatInput')?.focus(),80);return}catch(e){return toast(e.message)}}let c=directChatFor(u.id,target.id);if(!c){c={id:uid('chat'),type:'direct',name:target.name,memberIds:[u.id,target.id],createdAt:new Date().toISOString()};db.chats.push(c)}save();window.__activeChat=c.id;render();setTimeout(()=>document.getElementById('chatInput')?.focus(),80)}
+async function sendChatMessage(chatId){const u=currentUser(),el=document.getElementById('chatInput'),text=el?.value.trim();if(!u||!text)return;const c=cloudChats.find(x=>x.id===chatId)||db.chats.find(x=>x.id===chatId);if(!c)return;if(CLOUD_API_BASE&&cloudToken){try{await cloudFetch('/api/chats/'+encodeURIComponent(chatId)+'/messages',{method:'POST',body:JSON.stringify({text})});el.value='';return}catch(e){return toast(e.message)}}db.messages.push({id:uid('msg'),chatId,userId:u.id,userName:u.name,text,createdAt:new Date().toISOString()});save();el.value='';render();window.__activeChat=chatId}
+
+/* Robust global bindings: inline buttons remain functional in WebView/PWA/HTML */
+window.openAuth=openAuth;window.authMode=authMode;window.closeModal=closeModal;
+window.login=login;window.register=register;window.logout=logout;
+
+/* ================= Language / Settings ================= */
+const LANGKEY="LEMONADE_LANGUAGE";
+function getLang(){return localStorage.getItem(LANGKEY)==="en"?"en":"fa"}
+function setLanguage(lang){
+ localStorage.setItem(LANGKEY,lang==="en"?"en":"fa");
+ document.documentElement.lang=lang==="en"?"en":"fa";
+ document.documentElement.dir=lang==="en"?"ltr":"rtl";
+ render();
+ toast(lang==="en"?"English enabled":"زبان فارسی فعال شد");
+}
+const ENMAP=[
+ ["خانه","Home"],["منو","Menu"],["پک تخفیفی","Discount Packs"],["سبد","Cart"],["سفارش‌های من","My Orders"],["سفارش‌های اخیر","Recent Orders"],["چت‌ها","Chats"],["پروفایل","Profile"],["تنظیمات","Settings"],["گزارش باگ","Bug Report"],["ورود / ثبت‌نام","Login / Register"],["مشاهده منو","View Menu"],["دیدن پک‌های تخفیفی","View Discount Packs"],["پیشنهادهای امروز","Today's Offers"],["منوی سریع","Quick Menu"],["ورود / ثبت‌نام","Login / Register"],["ورود","Login"],["ثبت‌نام","Register"],["ساخت حساب","Create Account"],["شماره موبایل","Mobile Number"],["رمز عبور","Password"],["نام","Name"],["ارسال","Send"],["پیام","Message"],["جستجوی کاربر","Search User"],["جستجو","Search"],["چت خصوصی","Private Chat"],["گفتگوهای من","My Conversations"],["گزارش تخلف","Report User"],["بلاک کاربر","Block User"],["آدرس ذخیره‌شده","Saved Address"],["پلاک ذخیره‌شده","Saved Plate"],["ذخیره آدرس و پلاک","Save Address & Plate"],["تنظیمات برنامه","App Settings"],["زبان برنامه","App Language"],["فارسی","Persian"],["انگلیسی","English"],["ذخیره","Save"],["بازگشت","Back"]
+];
+function localizeHTML(html){
+ if(getLang()!=="en")return html;
+ let out=html;
+ for(const [fa,en] of ENMAP){out=out.split(fa).join(en)}
+ out=out.replace(/پیامت را بنویس\.\.\./g,"Write your message...").replace(/هنوز پیامی نیست\. اولین پیام را بفرست\./g,"No messages yet. Send the first message.").replace(/کاربری با این نام پیدا نشد\./g,"No user found with this name.");
+ return out;
+}
+function settingsPage(){
+ const en=getLang()==="en";
+ return `<section class="hero"><h1>⚙️ ${en?"App Settings":"تنظیمات برنامه"}</h1><p>${en?"Customize the app language.":"تنظیمات برنامه را از اینجا تغییر بده."}</p></section>
+ <div class="card"><h3>🌐 ${en?"App Language":"زبان برنامه"}</h3>
+ <div class="row wrap" style="margin-top:14px">
+  <button type="button" class="btn ${!en?"primary":""}" onclick="setLanguage('fa')">🇮🇷 فارسی</button>
+  <button type="button" class="btn ${en?"primary":""}" onclick="setLanguage('en')">🇬🇧 English</button>
+ </div>
+ <div class="note" style="margin-top:14px">${en?"Your language choice is saved on this device.":"انتخاب زبان روی همین دستگاه ذخیره می‌شود."}</div></div>`;
+}
+
+/* Runtime protection: never leave the app on a black/empty screen after a non-critical error. */
+window.addEventListener("error",function(ev){
+  console.error("Lemonade runtime error:",ev.error||ev.message);
+  try{
+    const app=document.getElementById("app");
+    if(app && !app.innerHTML.trim()) app.innerHTML='<main class="container"><div class="hero"><h1>🍋 کافه لیموناد</h1><p>یک خطای موقت رخ داد.</p><button class="btn primary" type="button" onclick="location.reload()">تلاش دوباره</button></div></main>';
+  }catch(_){}
+});
+window.addEventListener("unhandledrejection",function(ev){
+  console.error("Lemonade promise error:",ev.reason);
+  try{ if(typeof toast==="function") toast(ev.reason?.message||"یک خطای موقت رخ داد."); }catch(_){}
+});
+
+/* Global navigation */
+function setTab(t){tab=t;render()}
+window.addEventListener("storage",()=>{db=loadDB();render()});
+if(cloudReady){cloudStartListener()}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
+
+/* Stable database + presence heartbeat. Future app versions should keep DBKEY unchanged. */
+if(session?.userId){const u=currentUser();if(u){u.online=true;u.lastSeenAt=new Date().toISOString();save();}}
+setInterval(()=>{if(session?.userId){const u=currentUser();if(u){u.online=true;u.lastSeenAt=new Date().toISOString();localStorage.setItem(DBKEY,JSON.stringify(db));}}},15000);
+window.addEventListener("beforeunload",()=>{const u=currentUser();if(u){u.online=false;u.lastSeenAt=new Date().toISOString();localStorage.setItem(DBKEY,JSON.stringify(db));}});
+render();
+
+
+</script>
+<script>
+/* ===== Manager/Customer roles + order alert layer ===== */
+const MANAGER_PHONE="09197744401";
+const MANAGER_PASSWORD="20832083";
+let authRole="customer";
+function managerSession(){return session&&session.mode==="admin";}
+let managerSocket=null;
+async function managerCloudLogin(){if(!CLOUD_API_BASE)return;try{const r=await fetch(CLOUD_API_BASE+'/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:MANAGER_PHONE,password:MANAGER_PASSWORD})});if(!r.ok)throw new Error('admin cloud login failed');const j=await r.json();localStorage.setItem('LEMONADE_ADMIN_TOKEN',j.token);managerConnectSocket()}catch(e){console.warn('manager cloud login',e.message)}}
+function managerConnectSocket(){if(!CLOUD_API_BASE||managerSocket)return;const t=localStorage.getItem('LEMONADE_ADMIN_TOKEN');if(!t)return;try{const base=new URL(CLOUD_API_BASE);const proto=base.protocol==='https:'?'wss:':'ws:';const url=proto+'//'+base.host+'/ws?token='+encodeURIComponent(t);managerSocket=new WebSocket(url);managerSocket.onmessage=e=>{try{const x=JSON.parse(e.data);if(x.type==='new_order'&&managerSession()){const o=x.order||{};managerNotify('سفارش جدید کافه لیموناد',`سفارش ${o.id||''} از طرف ${o.name||'مشتری'} ثبت شد — مبلغ ${money(o.total||0)}`);db.orders.unshift(o);safeLocalSet(DBKEY,JSON.stringify(db));if(mode==='admin'&&tab==='orders')render();}}catch(err){console.warn('manager event',err.message)}};managerSocket.onclose=()=>{managerSocket=null;if(managerSession())setTimeout(managerConnectSocket,3000)};}catch(e){managerSocket=null}}
+function managerNotify(title,body){
+ try{
+  if("Notification" in window){
+   if(Notification.permission==="granted") new Notification(title,{body,icon:"./icons/icon-192.png",badge:"./icons/icon-192.png"});
+   else if(Notification.permission!=="denied") Notification.requestPermission().then(p=>{if(p==="granted")new Notification(title,{body,icon:"./icons/icon-192.png"})}).catch(()=>{});
+  }
+ }catch(e){}
+ try{toast("🔔 "+title+"\n"+body)}catch(e){}
+}
+async function enableManagerNotifications(){
+ try{
+  if("Notification" in window && Notification.permission!=="granted") await Notification.requestPermission();
+ }catch(e){}
+}
+function authRoleButtons(){return `<div class="field"><label>نوع حساب</label><div class="row wrap"><button type="button" class="btn ${authRole==="customer"?"primary":""}" onclick="setAuthRole('customer')">👤 مشتری</button><button type="button" class="btn ${authRole==="admin"?"primary":""}" onclick="setAuthRole('admin')">⚙️ مدیر</button></div></div>`}
+function setAuthRole(role){authRole=role==="admin"?"admin":"customer";authMode(window.__authType||"login")}
+function openAuth(msg=""){
+ try{
+  const modal=document.getElementById('modal'),box=document.getElementById('modalBox');
+  if(!modal||!box)return;
+  window.__authType="login";authRole="customer";
+  box.innerHTML=`<h2>👤 ورود / ثبت‌نام</h2>${msg?`<div class="note">${esc(msg)}</div><br>`:""}<div class="tabs"><button type="button" class="btn tab active" onclick="window.authMode('login')">ورود</button><button type="button" class="btn tab" onclick="window.authMode('register')">ثبت‌نام</button></div><div id="authForm"></div>`;
+  modal.classList.add('show');authMode('login');
+ }catch(e){toast('پنجره ورود باز نشد. دوباره تلاش کن.');}
+}
+function authMode(type){
+ window.__authType=type;const form=document.getElementById('authForm');if(!form)return;
+ document.querySelectorAll('.tabs .tab').forEach((b,i)=>b.classList.toggle('active',(type==='login'&&i===0)||(type==='register'&&i===1)));
+ if(type==='login')form.innerHTML=`${authRoleButtons()}<div class="field"><label>شماره موبایل</label><input id="aPhone" inputmode="tel" autocomplete="tel" placeholder="0912..." onkeydown="if(event.key==='Enter')window.login()"></div><div class="field"><label>رمز عبور</label><input id="aPass" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')window.login()"></div><button type="button" class="btn primary" style="width:100%" onclick="window.login()">ورود</button>`;
+ else form.innerHTML=`${authRoleButtons()}${authRole==='admin'?`<div class="note">حساب مدیر ثابت است و فقط با اطلاعات مدیریت قابل ورود است.</div>`:`<div class="field"><label>نام</label><input id="aName" autocomplete="name"></div>`}<div class="field"><label>شماره موبایل</label><input id="aPhone" inputmode="tel" autocomplete="tel"></div><div class="field"><label>رمز عبور</label><input id="aPass" type="password" autocomplete="new-password" onkeydown="if(event.key==='Enter')window.register()"></div><button type="button" class="btn green" style="width:100%" onclick="window.register()">${authRole==='admin'?'ورود به حساب مدیر':'ساخت حساب مشتری'}</button>`;
+}
+async function login(){
+ const p=document.getElementById('aPhone')?.value.trim(),pass=document.getElementById('aPass')?.value||'';
+ if(!p||!pass)return toast('شماره و رمز را کامل کنید.');
+ if(authRole==='admin'){
+  if(p!==MANAGER_PHONE||pass!==MANAGER_PASSWORD)return toast('شماره یا رمز مدیر اشتباه است.');
+  session={mode:'admin',role:'admin',phone:MANAGER_PHONE};safeLocalSet(SESSIONKEY,JSON.stringify(session));mode='admin';tab='dashboard';closeModal();await enableManagerNotifications();await managerCloudLogin();render();toast('ورود مدیر موفق بود ✅');return;
+ }
+ const oldLogin=window.__customerLoginOriginal;
+ if(oldLogin)return oldLogin(p,pass);
+ const u=db.users.find(x=>x.phone===p&&x.password===pass);if(!u)return toast('شماره یا رمز اشتباه است.');if(isBannedUser(u))return toast('این حساب توسط مدیریت مسدود شده است.');session={mode:'customer',userId:u.id};u.online=true;u.lastSeenAt=new Date().toISOString();save();safeLocalSet(SESSIONKEY,JSON.stringify(session));closeModal();tab='home';render();
+}
+async function register(){
+ const p=document.getElementById('aPhone')?.value.trim(),pass=document.getElementById('aPass')?.value||'';
+ if(authRole==='admin')return login();
+ const name=document.getElementById('aName')?.value.trim();
+ if(!name||!p||!pass)return toast('همه موارد را کامل کنید.');
+ if(CLOUD_API_BASE){try{const u=await cloudRegister(name,p,pass);session={mode:'customer',userId:u.id};safeLocalSet(SESSIONKEY,JSON.stringify(session));closeModal();toast('حساب آنلاین ساخته شد 🎉');render();return}catch(e){return toast(e.message)}}
+ if(db.users.some(u=>u.phone===p))return toast('این شماره قبلاً ثبت شده.');const u={id:uid('usr'),name,phone:p,password:pass,points:0,createdAt:new Date().toISOString(),online:true,onlineVisible:true,lastSeenAt:new Date().toISOString(),savedAddress:'',savedPlaque:'',banned:false,blockedUsers:[]};db.users.push(u);save();session={mode:'customer',userId:u.id};safeLocalSet(SESSIONKEY,JSON.stringify(session));closeModal();toast('حساب ساخته شد 🎉');render();
+}
+/* Preserve the original customer login function for the role wrapper. */
+if(!window.__customerLoginOriginal){
+ window.__customerLoginOriginal=async function(p,pass){
+  if(CLOUD_API_BASE){try{const u=await cloudLogin(p,pass);if(isBannedUser(u))return toast('این حساب توسط مدیریت مسدود شده است.');session={mode:'customer',userId:u.id};safeLocalSet(SESSIONKEY,JSON.stringify(session));closeModal();tab='home';render();return}catch(e){if(e?.status===401||e?.status===403)return toast(e.message||'شماره یا رمز اشتباه است.');console.warn('cloud login unavailable; using local account',e)}}
+  const u=db.users.find(x=>String(x.phone)===String(p)&&String(x.password)===String(pass));if(!u)return toast('شماره یا رمز اشتباه است.');if(isBannedUser(u))return toast('این حساب توسط مدیریت مسدود شده است.');session={mode:'customer',userId:u.id};u.online=true;u.lastSeenAt=new Date().toISOString();save();safeLocalSet(SESSIONKEY,JSON.stringify(session));closeModal();tab='home';render();
+ };
+}
+const __oldSubmitOrder=submitOrder;
+submitOrder=async function(){
+ const before=Array.isArray(db.orders)?db.orders.length:0;
+ const r=__oldSubmitOrder();
+ try{
+  if(r&&typeof r.then==='function')await r;
+  const newest=db.orders[0];
+  if(newest&&db.orders.length>=before&&managerSession()){
+   managerNotify('سفارش جدید کافه لیموناد',`سفارش ${newest.id} از طرف ${newest.name} ثبت شد — مبلغ ${money(newest.total)}`);
+   if(CLOUD_API_BASE&&cloudToken){try{await cloudFetch('/api/orders',{method:'POST',body:JSON.stringify(newest)})}catch(e){console.warn('cloud order',e.message)}}
+  }
+ }catch(e){console.warn('order alert',e.message)}
+ return r;
+};
+window.openAuth=openAuth;window.authMode=authMode;window.setAuthRole=setAuthRole;window.login=login;window.register=register;
+/* If manager is already logged in, ask for notification permission. */
+if(managerSession())setTimeout(enableManagerNotifications,700);
+
+</script>
+<script>if(cloudToken&&CLOUD_API_BASE){cloudBooted=true;cloudRefresh().then(()=>{cloudConnectSocket();if(typeof render==='function')render()}).catch(()=>{})}</script>
+<script>if("serviceWorker" in navigator && location.protocol.startsWith("http")){navigator.serviceWorker.register("./sw.js",{scope:"./"}).catch(()=>{})}</script>
+
+<script>
+/* ===== Lemonade vNext: Mini-game + Loyalty + Coupons + Cloud profile sync ===== */
+(function(){
+  const oldLoadDB=window.loadDB;
+  const ensureFeatures=()=>{
+    db.coupons=Array.isArray(db.coupons)?db.coupons:[];
+    db.users.forEach(u=>{
+      if(typeof u.gameScore!=='number')u.gameScore=0;
+      if(!Array.isArray(u.gameUsedQuestions))u.gameUsedQuestions=[];
+      if(typeof u.gameLockedUntil!=='number')u.gameLockedUntil=0;
+      if(typeof u.gameHearts!=='number')u.gameHearts=5;if(typeof u.gameOpportunities!=='number')u.gameOpportunities=5;
+      if(typeof u.loyaltyPoints!=='number')u.loyaltyPoints=Number(u.points||0);
+      if(typeof u.pizzaRewardClaimed!=='boolean')u.pizzaRewardClaimed=false;
+    });
+  };
+  ensureFeatures();
+
+  const QUESTIONS=[
+    ['science','کدام سیاره به «سیاره سرخ» معروف است؟',['زمین','مریخ','زهره','مشتری'],1],
+    ['science','واحد اندازه‌گیری جریان الکتریکی چیست؟',['ولت','وات','آمپر','اهم'],2],
+    ['science','کدام گاز بیشترین سهم را در جو زمین دارد؟',['اکسیژن','نیتروژن','دی‌اکسیدکربن','هیدروژن'],1],
+    ['science','مرکز اتم چه نام دارد؟',['الکترون','مولکول','هسته','یون'],2],
+    ['science','کدام اندام در بدن انسان بیشتر مسئول پمپاژ خون است؟',['ریه','قلب','کبد','معده'],1],
+    ['science','سرعت نور در خلأ تقریباً چقدر است؟',['۳۰۰ هزار کیلومتر بر ثانیه','۳۰ هزار کیلومتر بر ثانیه','۳ هزار کیلومتر بر ثانیه','۳ میلیون کیلومتر بر ثانیه'],0],
+    ['science','آب در فشار معمولی در چند درجه سانتی‌گراد یخ می‌زند؟',['۰','۱۰','۵۰','۱۰۰'],0],
+    ['science','کدام ویتامین بیشتر با نور خورشید در ارتباط است؟',['A','B12','C','D'],3],
+    ['science','DNA مخفف کدام عبارت است؟',['اسید دئوکسی‌ریبونوکلئیک','اسید لاکتیک','اسید آمینه','اسید ریبونوکلئیک'],0],
+    ['science','کدام ذره بار منفی دارد؟',['پروتون','نوترون','الکترون','فوتون'],2],
+    ['science','بزرگ‌ترین سیاره منظومه شمسی کدام است؟',['زحل','مشتری','نپتون','اورانوس'],1],
+    ['science','کدام فلز در دمای اتاق مایع است؟',['آهن','مس','جیوه','آلومینیوم'],2],
+    ['science','گیاهان در فتوسنتز عمدتاً کدام گاز را مصرف می‌کنند؟',['اکسیژن','نیتروژن','دی‌اکسیدکربن','هلیوم'],2],
+    ['science','کدام نیرو اجسام را به سوی زمین می‌کشد؟',['اصطکاک','گرانش','شناوری','کشش سطحی'],1],
+    ['science','کدام بخش سلول معمولاً ماده ژنتیکی را در خود دارد؟',['هسته','دیواره سلولی','ریبوزوم','واکوئول'],0],
+    ['science','pH کمتر از ۷ معمولاً نشان‌دهنده چیست؟',['محیط اسیدی','محیط خنثی','محیط بازی','محیط فلزی'],0],
+    ['science','کدام سیاره نزدیک‌ترین سیاره به خورشید است؟',['زهره','زمین','عطارد','مریخ'],2],
+    ['science','واحد SI انرژی چیست؟',['ژول','پاسکال','کلوین','آمپر'],0],
+    ['science','کدام اندام اکسیژن را وارد خون می‌کند؟',['کبد','ریه','کلیه','طحال'],1],
+    ['science','صوت برای انتشار به چه چیزی نیاز دارد؟',['خلأ مطلق','محیط مادی','فقط نور','میدان مغناطیسی'],1],
+    ['history','تخت جمشید در نزدیکی کدام شهر امروزی ایران قرار دارد؟',['شیراز','تبریز','رشت','کرمان'],0],
+    ['history','کوروش بزرگ بنیان‌گذار کدام شاهنشاهی بود؟',['ساسانی','هخامنشی','اشکانی','صفوی'],1],
+    ['history','جنگ جهانی دوم در سال ۱۹۳۹ با حمله آلمان به کدام کشور آغاز شد؟',['فرانسه','لهستان','روسیه','ایتالیا'],1],
+    ['history','انقلاب فرانسه در کدام قرن آغاز شد؟',['۱۵','۱۶','۱۸','۲۰'],2],
+    ['history','اولین انسان روی ماه چه کسی بود؟',['یوری گاگارین','نیل آرمسترانگ','باز آلدرین','جان گلن'],1],
+    ['history','امپراتوری روم باستان عمدتاً در کدام قاره گسترش داشت؟',['اروپا','استرالیا','آمریکای جنوبی','قطب جنوب'],0],
+    ['history','خط میخی در تمدن‌های باستانی بیشتر در کدام منطقه رواج داشت؟',['بین‌النهرین','اسکاندیناوی','آمریکای مرکزی','ژاپن'],0],
+    ['history','دیوار بزرگ چین عمدتاً برای دفاع در برابر چه چیزی ساخته شد؟',['سیل','تهاجم اقوام شمالی','آتشفشان','زلزله'],1],
+    ['history','پایتخت هخامنشیان در کدام شهر باشکوه قرار داشت؟',['پرسپولیس','مدینه','اسکندریه','رُم'],0],
+    ['history','جنگ سرد عمدتاً میان کدام دو بلوک بود؟',['ایران و روم','آمریکا و شوروی','چین و ژاپن','هند و بریتانیا'],1],
+    ['history','کدام دودمان پس از صفویان در ایران به قدرت رسید؟',['افشاریه','هخامنشیان','ساسانیان','مادها'],0],
+    ['history','مگنا کارتا در تاریخ انگلستان در کدام قرن امضا شد؟',['قرن ۹','قرن ۱۳','قرن ۱۷','قرن ۱۹'],1],
+    ['history','تمدن مصر باستان در کنار کدام رود شکل گرفت؟',['دجله','نیل','دانوب','گنگ'],1],
+    ['history','یوری گاگارین نخستین انسان در چه حوزه‌ای بود؟',['فضا','قطب جنوب','اعماق اقیانوس','هواپیمای جت'],0],
+    ['history','کدام شهر باستانی در ایتالیا بر اثر فوران وزوو مدفون شد؟',['پمپئی','آتن','اسپارت','قرطاج'],0],
+    ['history','سلسله ساسانی پس از کدام سلسله باستانی ایران قرار داشت؟',['هخامنشی','اشکانی','ماد','صفوی'],1],
+    ['history','کدام اختراع به گوتنبرگ نسبت داده می‌شود؟',['چاپ با حروف متحرک','تلگراف','رادیو','لامپ'],0],
+    ['history','اتحاد جماهیر شوروی در چه سالی فروپاشید؟',['۱۹۷۹','۱۹۸۵','۱۹۹۱','۲۰۰۱'],2],
+    ['history','کدام تمدن شهر ماچوپیچو را ساخت؟',['مایا','اینکا','روم','فینیقی'],1],
+    ['history','جاده ابریشم بیشتر چه چیزی را به هم پیوند می‌داد؟',['شرق و غرب اوراسیا','آفریقا و استرالیا','قطب شمال و جنوب','آمریکا و استرالیا'],0],
+    ['football','تعداد بازیکنان هر تیم فوتبال در زمین چند نفر است؟',['۹','۱۰','۱۱','۱۲'],2],
+    ['football','جام جهانی فوتبال ۲۰۲۲ در کدام کشور برگزار شد؟',['قطر','روسیه','برزیل','آلمان'],0],
+    ['football','کدام کشور بیشترین قهرمانی جام جهانی مردان را دارد؟',['آلمان','برزیل','آرژانتین','ایتالیا'],1],
+    ['football','کارت قرمز در فوتبال چه معنایی دارد؟',['تعویض اجباری','اخراج بازیکن','گل مردود','پایان نیمه'],1],
+    ['football','در فوتبال، هت‌تریک به چه معناست؟',['۳ گل توسط یک بازیکن','۳ کارت زرد','۳ تعویض','۳ کرنر'],0],
+    ['football','فینال جام جهانی ۲۰۲۲ بین کدام دو تیم بود؟',['فرانسه و آرژانتین','برزیل و فرانسه','آلمان و آرژانتین','اسپانیا و فرانسه'],0],
+    ['football','کدام باشگاه با لقب «کهکشانی‌ها» شناخته می‌شود؟',['بارسلونا','رئال مادرید','لیورپول','میلان'],1],
+    ['football','ال‌کلاسیکو معمولاً بین کدام دو باشگاه است؟',['رئال مادرید و بارسلونا','میلان و اینتر','لیورپول و سیتی','بایرن و دورتموند'],0],
+    ['football','دروازه‌بان در محوطه جریمه تیم خود چه امتیاز ویژه‌ای دارد؟',['می‌تواند با دست توپ را لمس کند','می‌تواند بدون خطا تکل کند','گل دو امتیازی می‌زند','محدودیت ندارد'],0],
+    ['football','کدام کشور قهرمان جام جهانی ۲۰۱۴ شد؟',['آرژانتین','آلمان','هلند','برزیل'],1],
+    ['football','کدام بازیکن با لقب CR7 شناخته می‌شود؟',['لیونل مسی','کریستیانو رونالدو','نیمار','مودریچ'],1],
+    ['football','کدام بازیکن با لقب «La Pulga» شناخته می‌شود؟',['مسی','رونالدو','امباپه','هالند'],0],
+    ['football','قهرمان جام جهانی ۲۰۱۸ کدام کشور بود؟',['فرانسه','کرواسی','برزیل','بلژیک'],0],
+    ['football','در لیگ قهرمانان اروپا، کدام تیم به «قرمزهای آنفیلد» معروف است؟',['لیورپول','آرسنال','منچستریونایتد','چلسی'],0],
+    ['football','کدام کشور میزبان جام جهانی ۲۰۱۰ بود؟',['آفریقای جنوبی','مصر','مراکش','نیجریه'],0],
+    ['football','آفساید مربوط به کدام بخش بازی است؟',['موقعیت مهاجم هنگام پاس','تعداد کرنر','خطای دروازه‌بان','تعویض'],0],
+    ['football','کدام باشگاه ایتالیایی لباس مشهور سیاه و سفید دارد؟',['یوونتوس','رم','ناپولی','لاتزیو'],0],
+    ['football','توپ فوتبال استاندارد در بزرگسالان معمولاً چه سایزی است؟',['۳','۴','۵','۶'],2],
+    ['football','کدام بازیکن آرژانتینی قهرمان جام جهانی ۲۰۲۲ شد؟',['مسی','دی‌ماریا','باتیستوتا','کرسپو'],0],
+    ['football','کدام رقابت ملی هر چهار سال یک بار برگزار می‌شود؟',['جام جهانی','لیگ داخلی','جام حذفی باشگاهی','سوپرجام باشگاهی'],0],
+  ].map((q,i)=>({id:'q'+(i+1),cat:q[0],text:q[1],answers:q[2],correct:q[3]}));
+
+  let gameTimer=null;
+  function gameUser(){try{const u=(typeof currentUser==='function')?currentUser():null;if(!u)return null;if(!Array.isArray(u.gameUsedQuestions))u.gameUsedQuestions=[];if(!Number.isFinite(Number(u.gameScore)))u.gameScore=0;if(!Number.isFinite(Number(u.gameHearts)))u.gameHearts=5;if(!Number.isFinite(Number(u.gameOpportunities)))u.gameOpportunities=5;if(!Number.isFinite(Number(u.gameLockedUntil)))u.gameLockedUntil=0;if(!Number.isFinite(Number(u.loyaltyPoints)))u.loyaltyPoints=0;if(typeof u.pizzaRewardClaimed!=='boolean')u.pizzaRewardClaimed=false;return u;}catch(e){console.error('gameUser error',e);return null}}
+  function saveFeatureState(){try{save();}catch(e){safeLocalSet(DBKEY,JSON.stringify(db));} syncProfileCloud();}
+  async function syncProfileCloud(){
+    if(!CLOUD_API_BASE||!cloudToken)return;
+    const u=gameUser();if(!u)return;
+    try{await cloudFetch('/api/profile-state',{method:'PUT',body:JSON.stringify({gameScore:u.gameScore,gameUsedQuestions:u.gameUsedQuestions,gameLockedUntil:u.gameLockedUntil,gameHearts:u.gameHearts,gameOpportunities:u.gameOpportunities,loyaltyPoints:u.loyaltyPoints,pizzaRewardClaimed:u.pizzaRewardClaimed})});}catch(e){console.warn('profile sync',e.message)}
+  }
+  async function loadProfileCloud(){
+    if(!CLOUD_API_BASE||!cloudToken)return;
+    try{const r=await cloudFetch('/api/profile-state');const u=gameUser();if(!u||!r.state)return;Object.assign(u,r.state);safeLocalSet(DBKEY,JSON.stringify(db));}catch(e){console.warn('profile load',e.message)}
+  }
+  function gameScoreNextLock(u){return Math.min(1000,Math.floor(u.gameScore/100)*100+100)}
+  function gamePage(){
+    const u=gameUser();if(!u)return homePage();
+    const now=Date.now(); const locked=u.gameLockedUntil>now; const left=locked?Math.ceil((u.gameLockedUntil-now)/1000):0;
+    const next=Math.min(1000,Math.floor(u.gameScore/100)*100+100);
+    return `<section class="hero"><h1>🎮 مینی‌گیم کافه لیموناد</h1><p>پنج قلب داری؛ هر پاسخ درست ۲۰ امتیاز. در هر مرحله با رسیدن به ۱۰۰ امتیاز، بازی ۲ ساعت قفل می‌شود.</p>
+      <div class="kpi"><div class="card"><div class="muted">امتیاز بازی</div><b>${u.gameScore}/1000</b></div><div class="card"><div class="muted">قلب‌ها</div><b>❤️ ${u.gameHearts}/5</b></div><div class="card"><div class="muted">فرصت‌ها</div><b>🎯 ${u.gameOpportunities}/5</b></div><div class="card"><div class="muted">امتیاز وفاداری</div><b>⭐ ${u.loyaltyPoints||0}</b></div></div></section>
+      ${u.gameScore>=1000?`<div class="card" style="border-color:#31e981"><h2>🏆 جایزه ویژه</h2><p>تبریک! به ۱۰۰۰ امتیاز رسیدی و پیتزا مخصوص لیموناد یک‌نفره را برنده شدی.</p><button class="btn green" onclick="claimPizzaReward()">🍕 دریافت و سفارش جایزه</button></div>`:''}
+      ${locked?`<div class="card"><h2>⏳ بازی موقتاً قفل است</h2><p>مرحله بعد پس از پایان زمان قفل باز می‌شود.</p><div id="gameLockTimer" class="price">${formatGameTime(left)}</div></div>`:`<div class="card"><div class="row"><span class="badge">مرحله بعد: ${next} امتیاز</span><span class="badge green">۱۵ ثانیه</span></div><div id="gameArea" style="margin-top:14px">${gameQuestionHTML()}</div></div>`}
+      <div class="card"><h3>⭐ امتیازهای من</h3><div class="row"><span>امتیاز بازی</span><b>${u.gameScore}</b></div><div class="row"><span>امتیاز وفاداری خرید</span><b>${u.loyaltyPoints||0}</b></div><div class="note" style="margin-top:10px">هر ۱۰٬۰۰۰ تومان مبلغ نهایی سفارش = ۱ امتیاز وفاداری.</div></div>`;
+  }
+  function formatGameTime(s){const m=Math.floor(s/60),sec=s%60;return `${m} دقیقه و ${sec} ثانیه`}
+  function pickQuestion(){
+    const u=gameUser(); if(!u)return null;
+    let used=Array.isArray(u.gameUsedQuestions)?u.gameUsedQuestions:[]; let pool=QUESTIONS.filter(q=>!used.includes(q.id));
+    if(!pool.length){u.gameUsedQuestions=[];pool=QUESTIONS.slice();}
+    return pool[Math.floor(Math.random()*pool.length)];
+  }
+  function gameQuestionHTML(){
+    const q=pickQuestion();if(!q||!Array.isArray(q.answers)||q.answers.length<2)return '<div class="empty">فعلاً سؤال قابل نمایش نیست.</div>';
+    window.__gameCurrent=q.id;
+    const shuffled=q.answers.map((a,i)=>({a,i})).sort(()=>Math.random()-.5);
+    window.__gameOptions=shuffled;
+    return `<div class="row"><b>${q.cat==='science'?'🔬 علمی':q.cat==='history'?'🏛️ تاریخی':'⚽ فوتبالی'}</b><span id="gameTimer" class="badge red">۱۵ ثانیه</span></div><h2 style="margin-top:15px">${esc(q.text)}</h2><div class="grid" style="margin-top:15px">${shuffled.map((x,n)=>`<button class="btn" style="min-height:58px;font-size:16px" onclick="answerGame(${n})">${String.fromCharCode(65+n)}) ${esc(x.a)}</button>`).join('')}</div>`;
+  }
+  function startGameTimer(){
+    clearInterval(gameTimer);let sec=15;const el=()=>document.getElementById('gameTimer');
+    gameTimer=setInterval(()=>{sec--;const x=el();if(x)x.textContent=`${sec} ثانیه`;if(sec<=0){clearInterval(gameTimer);answerGame(-1,true)}},1000);
+  }
+  function answerGame(n,timeout=false){
+    clearInterval(gameTimer);const u=gameUser();if(!u)return;const q=QUESTIONS.find(x=>x.id===window.__gameCurrent);if(!q)return;
+    if(!Array.isArray(u.gameUsedQuestions))u.gameUsedQuestions=[];if(u.gameUsedQuestions.includes(q.id))return;
+    u.gameUsedQuestions.push(q.id);
+    const opt=window.__gameOptions?.[n]; const correct=!!opt&&opt.i===q.correct;
+    if(correct){u.gameScore+=20;u.gameHearts=5;toast('آفرین! ۲۰ امتیاز گرفتی 🎉');}
+    else {u.gameHearts=Math.max(0,u.gameHearts-1);u.gameOpportunities=Math.max(0,u.gameOpportunities-1);toast(timeout?'زمان تمام شد ⏰ — یک قلب و یک فرصت کم شد':'پاسخ اشتباه بود ❌ — یک قلب و یک فرصت کم شد');}
+    if(u.gameScore>=1000){u.gameScore=1000;u.gameLockedUntil=0;}
+    else if(u.gameScore>0 && u.gameScore%100===0){u.gameLockedUntil=Date.now()+2*60*60*1000;toast('مرحله کامل شد؛ بازی برای ۲ ساعت قفل شد ⏳');}
+    if(u.gameHearts<=0 || u.gameOpportunities<=0){u.gameHearts=5;u.gameOpportunities=5;u.gameUsedQuestions=[];toast('قلب‌ها و فرصت‌ها تمام شد؛ دوباره پر شدند ❤️🎯');}
+    saveFeatureState();render();
+    if(!u.gameLockedUntil && u.gameScore<1000)setTimeout(startGameTimer,80);
+  }
+  const __gamePageOriginal=gamePage; gamePage=function(){const h=__gamePageOriginal();setTimeout(()=>{if(tab==='game'&&gameUser()&&!gameUser().gameLockedUntil)startGameTimer();},80);return h;};
+  window.answerGame=answerGame;window.gamePage=gamePage;
+  window.claimPizzaReward=function(){
+    const u=gameUser();if(!u||u.gameScore<1000)return toast('ابتدا باید به ۱۰۰۰ امتیاز برسی.');
+    const f=db.foods.find(x=>x.name.includes('پیتزا مخصوص لیموناد - یک نفره'));
+    if(!f)return toast('پیتزا جایزه در منو پیدا نشد.');
+    if(u.pizzaRewardClaimed)return toast('جایزه قبلاً دریافت شده است.');
+    u.pizzaRewardClaimed=true;cart.push({type:'food',id:f.id,qty:1,award:true,unitOverride:0});saveCart();toast('پیتزا جایزه به سبد اضافه شد 🎁🍕');tab='cart';render();saveFeatureState();
+  };
+  window.setTab=setTab;
+  const oldCustomerContent=customerContent;
+  customerContent=function(){if(tab==='game')return gamePage();if(tab==='points')return pointsPage();return oldCustomerContent();};
+  function pointsPage(){
+  const __pu = (typeof currentUser==="function") ? currentUser() : null;
+  const __score = Math.max(0, Math.min(1000, Number(__pu?.gameScore||0)));
+  const __pct = Math.round(__score/10);
+  const pizzaProgressBar = `<div style="margin:14px 0;padding:14px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <b>🍕 پیتزا مخصوص لیموناد</b><span>${__pct}%</span>
+    </div>
+    <div style="height:14px;border-radius:999px;background:rgba(255,255,255,.10);overflow:hidden">
+      <div style="width:${__pct}%;height:100%;border-radius:999px;background:linear-gradient(90deg,#31e981,#ffd700);transition:width .4s ease"></div>
+    </div>
+    <small style="display:block;margin-top:8px;opacity:.75">${__score}/1000 امتیاز</small>
+    ${__score>=1000 ? '<div style="margin-top:10px;font-weight:800">🎉 جایزه آماده دریافت است!</div>' : ''}
+  </div>`;
+const u=gameUser();if(!u)return homePage();return `${pizzaProgressBar}<section class="hero"><h1>⭐ امتیازهای من</h1><p>امتیاز بازی و امتیاز وفاداری خرید را یکجا ببین.</p></section><div class="grid"><div class="card"><h3>🎮 امتیاز مینی‌گیم</h3><div class="price">${u.gameScore}/1000</div></div><div class="card"><h3>⭐ امتیاز وفاداری</h3><div class="price">${u.loyaltyPoints||0}</div><p class="muted">هر ۱۰٬۰۰۰ تومان مبلغ نهایی سفارش = ۱ امتیاز</p></div></div>${u.gameScore>=1000?`<div class="card"><h3>🏆 جایزه</h3><p>پیتزا مخصوص لیموناد یک‌نفره</p><span class="badge green">${u.pizzaRewardClaimed?'دریافت شده':'قابل دریافت'}</span></div>`:''}`}
+  window.pointsPage=pointsPage;
+  const oldTopbar=topbar;
+  topbar=function(title){
+    let out=oldTopbar(title);
+    if(mode==='customer'&&session?.userId){
+      const extra=`<button class="btn ${tab==='game'?'primary':''}" onclick="setTab('game')">🎮 مینی‌گیم</button><button class="btn ${tab==='points'?'primary':''}" onclick="setTab('points')">⭐ امتیازهای من</button>`;
+      const marker=`<button class="btn ${tab==="settings"?"primary":""}" onclick="setTab('settings')">⚙️ تنظیمات</button>`;
+      out=out.replace(marker,extra+marker);
+    }
+    return out;
+  };
+  /* Coupons */
+  function couponValid(c){const now=Date.now();return c&&c.published!==false&&(!c.startAt||now>=new Date(c.startAt).getTime())&&(!c.endAt||now<=new Date(c.endAt).getTime())&&(Number(c.maxUses||0)<=0||Number(c.used||0)<Number(c.maxUses))}
+  function calcCoupon(c,subtotal){if(!couponValid(c))return 0;let d=c.type==='percent'?Math.floor(subtotal*Number(c.value||0)/100):Math.floor(Number(c.value||0));return Math.min(subtotal,Math.max(0,d))}
+  window.applyCoupon=function(){const code=(document.getElementById('couponCode')?.value||'').trim().toUpperCase();const msg=document.getElementById('couponMsg');if(!code)return toast('کد تخفیف را وارد کن.');const c=db.coupons.find(x=>String(x.code).toUpperCase()===code);const sub=cartTotal();if(!c||!couponValid(c)){if(msg)msg.textContent='کد نامعتبر، منقضی یا غیرفعال است.';return}const d=calcCoupon(c,sub);window.__appliedCoupon={code:c.code,discount:d};if(msg)msg.textContent=`تخفیف ${money(d)} اعمال شد.`;const totalEl=document.getElementById('checkoutTotal');if(totalEl)totalEl.textContent=money(sub-d);toast('کد تخفیف اعمال شد 🎉');};
+  window.removeCoupon=function(){window.__appliedCoupon=null;render()};
+  const oldCheckout=checkoutPage;
+  checkoutPage=function(){const u=gameUser();if(!u)return homePage();const sub=cartTotal(),c=window.__appliedCoupon,d=c?c.discount:0;return `<div class="section-title"><h2>📦 ثبت سفارش</h2></div><div class="card"><div class="formgrid"><div class="field"><label>نام گیرنده</label><input id="coName" value="${esc(u.name)}"></div><div class="field"><label>شماره تلفن</label><input id="coPhone" value="${esc(u.phone||'')}"></div><div class="field full"><label>آدرس کامل</label><textarea id="coAddress" rows="3">${esc(u.savedAddress||'')}</textarea></div><div class="field"><label>پلاک</label><input id="coPlaque" value="${esc(u.savedPlaque||'')}"></div><div class="field"><label>تاریخ تحویل</label><input id="coDate" type="date"></div><div class="field"><label>ساعت تحویل</label><input id="coTime" type="time"></div><div class="field full"><label>توضیحات</label><textarea id="coNote" rows="2"></textarea></div></div><hr class="hr"><div class="card"><h3>🏷️ کد تخفیف</h3><div class="row"><input id="couponCode" placeholder="مثلاً G545F1K" style="flex:1" value="${c?esc(c.code):''}"><button class="btn yellow" onclick="applyCoupon()">اعمال</button></div><div id="couponMsg" class="muted" style="margin-top:8px">${c?`تخفیف ${money(d)} اعمال شده.`:'اگر کد تخفیف داری اینجا وارد کن.'}</div></div><div class="row"><span>جمع اولیه</span><b>${money(sub)}</b></div><div class="row"><span>تخفیف</span><b class="green">-${money(d)}</b></div><div class="row"><span>مبلغ نهایی</span><b id="checkoutTotal" class="price">${money(sub-d)}</b></div><button class="btn green" style="width:100%;margin-top:15px" onclick="submitOrder()">ثبت نهایی سفارش</button></div>`;};
+  const oldSubmit=submitOrder;
+  submitOrder=async function(){
+    const address=document.getElementById('coAddress')?.value.trim();if(!address)return toast('آدرس را وارد کن.');const items=cartDetails();if(!items.length)return toast('سبد خرید خالی است.');
+    const u=gameUser();const subtotal=cartTotal();let coupon=window.__appliedCoupon;let discount=coupon?.discount||0;
+    if(coupon){const c=db.coupons.find(x=>String(x.code).toUpperCase()===String(coupon.code).toUpperCase());if(!c||!couponValid(c)){window.__appliedCoupon=null;return toast('کد تخفیف دیگر معتبر نیست.');}discount=calcCoupon(c,subtotal);}
+    const total=Math.max(0,subtotal-discount);const earnedLoyalty=Math.max(1,Math.floor(total/10000));const oldLoyalty=Number(u.loyaltyPoints||u.points||0);u.phone=document.getElementById('coPhone').value.trim();
+    const order={id:uid('ord'),userId:u.id,name:document.getElementById('coName').value.trim(),phone:u.phone,address,plaque:document.getElementById('coPlaque').value.trim(),deliveryDate:document.getElementById('coDate').value,deliveryTime:document.getElementById('coTime').value,note:document.getElementById('coNote').value.trim(),items:items.map(x=>({type:x.type,id:x.id,name:x.name,qty:x.qty,unit:x.unit,total:x.total})),subtotal,discountAmount:discount,couponCode:coupon?.code||'',total,status:'در حال آماده‌سازی',createdAt:new Date().toISOString(),adminDeliveredAt:null,customerConfirmedAt:null,closedAt:null};
+    db.orders.unshift(order);if(coupon){const cc=db.coupons.find(x=>x.code===coupon.code);if(cc)cc.used=(cc.used||0)+1;}cart=[];saveCart();saveFeatureState();window.__appliedCoupon=null;
+    if(CLOUD_API_BASE&&cloudToken){try{const r=await cloudFetch('/api/orders',{method:'POST',body:JSON.stringify(order)});if(r.order)db.orders[0]=r.order;u.loyaltyPoints=oldLoyalty+earnedLoyalty;u.points=u.loyaltyPoints;}catch(e){u.loyaltyPoints=oldLoyalty+earnedLoyalty;u.points=u.loyaltyPoints;console.warn('cloud order',e.message)}}else{u.loyaltyPoints=oldLoyalty+earnedLoyalty;u.points=u.loyaltyPoints;}
+    toast(`سفارش ثبت شد 🎉 ${discount?`تخفیف ${money(discount)} اعمال شد.`:''}`);tab='orders';render();
+  };
+
+  /* Admin coupon manager */
+  const oldAdminContent=adminContent;
+  adminContent=function(){if(tab==='coupons')return adminCoupons();return oldAdminContent();};
+  function adminCoupons(){return `<div class="section-title"><h2>🏷️ مدیریت کدهای تخفیف</h2><span class="badge">${db.coupons.length} کد</span></div><div class="card"><div class="formgrid"><div class="field"><label>کد دلخواه</label><input id="cpCode" placeholder="G545F1K"></div><div class="field"><label>نوع تخفیف</label><select id="cpType"><option value="percent">درصدی</option><option value="fixed">مبلغ ثابت</option></select></div><div class="field"><label>مقدار</label><input id="cpValue" type="number" min="0" placeholder="مثلاً 15"></div><div class="field"><label>حداکثر استفاده</label><input id="cpMax" type="number" min="0" value="0"><small class="muted">۰ = بدون محدودیت</small></div><div class="field"><label>شروع</label><input id="cpStart" type="datetime-local"></div><div class="field"><label>پایان</label><input id="cpEnd" type="datetime-local"></div></div><label><input id="cpPublished" type="checkbox" checked> انتشار کد برای مشتری</label><button class="btn green" style="width:100%;margin-top:14px" onclick="createCoupon()">＋ ساخت کد تخفیف</button></div>${db.coupons.map(c=>`<div class="card"><div class="row"><b>${esc(c.code)}</b><span class="badge ${c.published!==false?'green':'red'}">${c.published!==false?'منتشر شده':'خاموش'}</span></div><p>${c.type==='percent'?c.value+'٪ تخفیف':money(c.value)+' تخفیف'} • استفاده ${c.used||0}/${c.maxUses||'∞'}</p><p class="muted">${c.startAt?'شروع: '+formatDate(c.startAt):'بدون شروع'} | ${c.endAt?'پایان: '+formatDate(c.endAt):'بدون پایان'}</p><div class="row"><button class="btn" onclick="toggleCoupon('${c.id}')">${c.published!==false?'خاموش کردن':'انتشار'}</button><button class="btn red" onclick="deleteCoupon('${c.id}')">حذف</button></div></div>`).join('')||'<div class="empty">هنوز کد تخفیفی ساخته نشده.</div>'}`}
+  async function couponPersist(){save();if(CLOUD_API_BASE&&localStorage.getItem('LEMONADE_ADMIN_TOKEN')){try{await fetch(CLOUD_API_BASE+'/api/admin/coupons',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+localStorage.getItem('LEMONADE_ADMIN_TOKEN')},body:JSON.stringify(db.coupons[0])});}catch(e){}}}
+  async function syncCouponsCloud(){try{const r=await fetch(CLOUD_API_BASE+'/api/admin/coupons',{headers:{Authorization:'Bearer '+localStorage.getItem('LEMONADE_ADMIN_TOKEN')}});if(r.ok){const j=await r.json();db.coupons=j.coupons||db.coupons;safeLocalSet(DBKEY,JSON.stringify(db));}}catch(e){}}
+  window.createCoupon=async function(){let code=(document.getElementById('cpCode')?.value||'').trim().toUpperCase().replace(/[^A-Z0-9_-]/g,'');const type=document.getElementById('cpType')?.value||'percent';const value=Number(document.getElementById('cpValue')?.value||0);if(!code||!value)return toast('کد و مقدار تخفیف را کامل کن.');if(db.coupons.some(x=>x.code===code))return toast('این کد قبلاً ساخته شده.');const payload={code,type,value,maxUses:Number(document.getElementById('cpMax')?.value||0),published:document.getElementById('cpPublished')?.checked!==false,startAt:document.getElementById('cpStart')?.value?new Date(document.getElementById('cpStart').value).toISOString():null,endAt:document.getElementById('cpEnd')?.value?new Date(document.getElementById('cpEnd').value).toISOString():null};let c={...payload,id:uid('cp'),used:0,createdAt:new Date().toISOString()};if(CLOUD_API_BASE&&localStorage.getItem('LEMONADE_ADMIN_TOKEN')){try{const r=await fetch(CLOUD_API_BASE+'/api/admin/coupons',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+localStorage.getItem('LEMONADE_ADMIN_TOKEN')},body:JSON.stringify(payload)});const j=await r.json();if(!r.ok)throw new Error(j.error||'ساخت کد ناموفق بود');c=j.coupon;}catch(e){return toast(e.message)}}db.coupons.unshift(c);save();toast('کد تخفیف ساخته شد ✅');render();};
+  window.toggleCoupon=async function(id){const c=db.coupons.find(x=>x.id===id);if(!c)return;c.published=c.published===false;save();if(CLOUD_API_BASE&&localStorage.getItem('LEMONADE_ADMIN_TOKEN')){try{await fetch(CLOUD_API_BASE+'/api/admin/coupons/'+encodeURIComponent(id),{method:'PUT',headers:{'Content-Type':'application/json',Authorization:'Bearer '+localStorage.getItem('LEMONADE_ADMIN_TOKEN')},body:JSON.stringify({published:c.published})})}catch(e){}}render()};
+  window.deleteCoupon=async function(id){db.coupons=db.coupons.filter(x=>x.id!==id);save();if(CLOUD_API_BASE&&localStorage.getItem('LEMONADE_ADMIN_TOKEN')){try{await fetch(CLOUD_API_BASE+'/api/admin/coupons/'+encodeURIComponent(id),{method:'DELETE',headers:{Authorization:'Bearer '+localStorage.getItem('LEMONADE_ADMIN_TOKEN')}})}catch(e){}}toast('کد حذف شد.');render()};
+  const oldAdminTop=topbar;
+  topbar=function(title){
+    let out=oldAdminTop(title);
+    if(mode==='admin'){
+      const extra=`<button class="btn ${tab==='coupons'?'primary':''}" onclick="setTab('coupons')">🏷️ کد تخفیف</button>`;
+      const marker=`<button class="btn \${tab==="bugs"?"primary":""}" onclick="setTab('bugs')">🐞 گزارش باگ</button>`;
+      out=out.replace(marker,extra+marker);
+    }
+    return out;
+  };
+  /* Load cloud profile once after login/start. */
+  setTimeout(()=>{if(cloudEnabled())loadProfileCloud();},500);
+  setInterval(()=>{const u=gameUser();if(u&&u.gameLockedUntil&&Date.now()>=u.gameLockedUntil){u.gameLockedUntil=0;saveFeatureState();if(tab==='game')render();}},1000);
+})();
+</script>
+
+</body>
+</html>
